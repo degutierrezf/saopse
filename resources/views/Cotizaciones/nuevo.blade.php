@@ -151,9 +151,47 @@
                   <th>TOTAL</th>
                 </tr>
                 </thead>
-                <tbody>
+                    <tbody>
+                    <?php  foreach ($mat1 as $mat1) { ?>
+                    <tr>
+                        <td>2.</td>
+                        <td><?php echo $mat1->cantidad?></td>
+                        <td><?php echo $mat1->unidad?></td>
+                        <td><?php echo $mat1->material?></td>
+                        <th>$<?php echo $mat1->subtotal?></th>
+                    </tr>
+                    <?php }?>
 
-                </tbody>
+                    <?php  foreach ($mat2 as $mat2) { ?>
+                    <tr>
+                        <td>2.</td>
+                        <td><?php echo $mat2->cantidad?></td>
+                        <td>Hr.</td>
+                        <td><?php echo $mat2->maquinaria?></td>
+                        <th>$<?php echo $mat2->subtotal?></th>
+                    </tr>
+                    <?php }?>
+
+                    <?php  foreach ($mat3 as $mat3) { ?>
+                    <tr>
+                        <td>2.</td>
+                        <td><?php echo $mat3->cantidad?></td>
+                        <td>Hr.</td>
+                        <td><?php echo $mat3->personal?></td>
+                        <th>$<?php echo $mat3->subtotal?></th>
+                    </tr>
+                    <?php }?>
+
+                    <?php  foreach ($mat4 as $mat4) { ?>
+                    <tr>
+                        <td>2.</td>
+                        <td><?php echo $mat4->cantidad?></td>
+                        <td>Hr.</td>
+                        <td><?php echo $mat4->item?></td>
+                        <th>$<?php echo $mat4->valor?></th>
+                    </tr>
+                    <?php }?>
+                    </tbody>
                 </table>
             </div>
             <!-- /.box-body -->

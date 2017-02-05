@@ -63,6 +63,31 @@ class CotizacionController extends Controller
          ->where('sp_actividad_id_actividad','=',1)
          ->get();
 
+        $mat1 = DB::table('sp_d_mat')
+            ->join('sp_materiales', 'id_materiales','=','sp_materiales_id_materiales')
+            ->where('sp_cotizacion_id_cotizacion','=',2)
+            ->where('sp_actividad_id_actividad','=',2)
+            ->get();
+
+        $mat2 = DB::table('sp_d_maq')
+            ->join('sp_maquinaria', 'id_maquinaria','=','sp_maquinaria_id_maquinaria')
+            ->where('sp_cotizacion_id_cotizacion','=',2)
+            ->where('sp_actividad_id_actividad','=',2)
+            ->get();
+
+        $mat3 = DB::table('sp_d_per')
+            ->join('sp_personal', 'id_personal','=','sp_personal_id_personal')
+            ->where('sp_cotizacion_id_cotizacion','=',2)
+            ->where('sp_actividad_id_actividad','=',2)
+            ->get();
+
+        $mat4 = DB::table('sp_otros')
+            ->where('sp_cotizacion_id_cotizacion','=',2)
+            ->where('sp_actividad_id_actividad','=',2)
+            ->get();
+
+
+
 
         return view('Cotizaciones.nuevo', ['cot'=>$cot, 
             'ac'=>$act, 
@@ -72,7 +97,11 @@ class CotizacionController extends Controller
             'rem1'=>$rem1,
             'rem2'=>$rem2,
             'rem3'=>$rem3,
-            'rem4'=>$rem4
+            'rem4'=>$rem4,
+            'mat1'=>$mat1,
+            'mat2'=>$mat2,
+            'mat3'=>$mat3,
+            'mat4'=>$mat4
             ]);
 
     }
