@@ -284,9 +284,47 @@
                   <th>TOTAL</th>
                 </tr>
                 </thead>
-                <tbody>
+                  <tbody>
+                  <?php  foreach ($sen1 as $sen1) { ?>
+                  <tr>
+                      <td>2.</td>
+                      <td><?php echo $sen1->cantidad?></td>
+                      <td><?php echo $sen1->unidad?></td>
+                      <td><?php echo $sen1->material?></td>
+                      <th>$<?php echo $sen1->subtotal?></th>
+                  </tr>
+                  <?php }?>
 
-                </tbody>
+                  <?php  foreach ($sen2 as $sen2) { ?>
+                  <tr>
+                      <td>2.</td>
+                      <td><?php echo $sen2->cantidad?></td>
+                      <td>Hr.</td>
+                      <td><?php echo $sen2->maquinaria?></td>
+                      <th>$<?php echo $sen2->subtotal?></th>
+                  </tr>
+                  <?php }?>
+
+                  <?php  foreach ($sen3 as $sen3) { ?>
+                  <tr>
+                      <td>2.</td>
+                      <td><?php echo $sen3->cantidad?></td>
+                      <td>Hr.</td>
+                      <td><?php echo $sen3->personal?></td>
+                      <th>$<?php echo $sen3->subtotal?></th>
+                  </tr>
+                  <?php }?>
+
+                  <?php  foreach ($sen4 as $sen4) { ?>
+                  <tr>
+                      <td>2.</td>
+                      <td><?php echo $sen4->cantidad?></td>
+                      <td>Hr.</td>
+                      <td><?php echo $sen4->item?></td>
+                      <th>$<?php echo $sen4->valor?></th>
+                  </tr>
+                  <?php }?>
+                  </tbody>
                 </table>
             </div>
             <!-- /.box-body -->
@@ -314,9 +352,47 @@
                   <th>TOTAL</th>
                 </tr>
                 </thead>
-                <tbody>
+                  <tbody>
+                  <?php  foreach ($ins1 as $ins1) { ?>
+                  <tr>
+                      <td>2.</td>
+                      <td><?php echo $ins1->cantidad?></td>
+                      <td><?php echo $ins1->unidad?></td>
+                      <td><?php echo $ins1->material?></td>
+                      <th>$<?php echo $ins1->subtotal?></th>
+                  </tr>
+                  <?php }?>
 
-                </tbody>
+                  <?php  foreach ($ins2 as $ins2) { ?>
+                  <tr>
+                      <td>2.</td>
+                      <td><?php echo $ins2->cantidad?></td>
+                      <td>Hr.</td>
+                      <td><?php echo $ins2->maquinaria?></td>
+                      <th>$<?php echo $ins2->subtotal?></th>
+                  </tr>
+                  <?php }?>
+
+                  <?php  foreach ($ins3 as $ins3) { ?>
+                  <tr>
+                      <td>2.</td>
+                      <td><?php echo $ins3->cantidad?></td>
+                      <td>Hr.</td>
+                      <td><?php echo $ins3->personal?></td>
+                      <th>$<?php echo $ins3->subtotal?></th>
+                  </tr>
+                  <?php }?>
+
+                  <?php  foreach ($ins4 as $ins4) { ?>
+                  <tr>
+                      <td>2.</td>
+                      <td><?php echo $ins4->cantidad?></td>
+                      <td>Hr.</td>
+                      <td><?php echo $ins4->item?></td>
+                      <th>$<?php echo $ins4->valor?></th>
+                  </tr>
+                  <?php }?>
+                  </tbody>
                 </table>
             </div>
             <!-- /.box-body -->

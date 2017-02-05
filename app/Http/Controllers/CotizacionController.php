@@ -113,6 +113,52 @@ class CotizacionController extends Controller
             ->where('sp_actividad_id_actividad','=',3)
             ->get();
 
+        $sen1 = DB::table('sp_d_mat')
+            ->join('sp_materiales', 'id_materiales','=','sp_materiales_id_materiales')
+            ->where('sp_cotizacion_id_cotizacion','=',1)
+            ->where('sp_actividad_id_actividad','=',4)
+            ->get();
+
+        $sen2 = DB::table('sp_d_maq')
+            ->join('sp_maquinaria', 'id_maquinaria','=','sp_maquinaria_id_maquinaria')
+            ->where('sp_cotizacion_id_cotizacion','=',1)
+            ->where('sp_actividad_id_actividad','=',4)
+            ->get();
+
+        $sen3 = DB::table('sp_d_per')
+            ->join('sp_personal', 'id_personal','=','sp_personal_id_personal')
+            ->where('sp_cotizacion_id_cotizacion','=',1)
+            ->where('sp_actividad_id_actividad','=',4)
+            ->get();
+
+        $sen4 = DB::table('sp_otros')
+            ->where('sp_cotizacion_id_cotizacion','=',1)
+            ->where('sp_actividad_id_actividad','=',5)
+            ->get();
+
+        $ins1 = DB::table('sp_d_mat')
+            ->join('sp_materiales', 'id_materiales','=','sp_materiales_id_materiales')
+            ->where('sp_cotizacion_id_cotizacion','=',1)
+            ->where('sp_actividad_id_actividad','=',5)
+            ->get();
+
+        $ins2 = DB::table('sp_d_maq')
+            ->join('sp_maquinaria', 'id_maquinaria','=','sp_maquinaria_id_maquinaria')
+            ->where('sp_cotizacion_id_cotizacion','=',1)
+            ->where('sp_actividad_id_actividad','=',5)
+            ->get();
+
+        $ins3 = DB::table('sp_d_per')
+            ->join('sp_personal', 'id_personal','=','sp_personal_id_personal')
+            ->where('sp_cotizacion_id_cotizacion','=',1)
+            ->where('sp_actividad_id_actividad','=',5)
+            ->get();
+
+        $ins4 = DB::table('sp_otros')
+            ->where('sp_cotizacion_id_cotizacion','=',1)
+            ->where('sp_actividad_id_actividad','=',5)
+            ->get();
+
 
 
 
@@ -134,7 +180,15 @@ class CotizacionController extends Controller
             'tra1'=>$tra1,
             'tra2'=>$tra2,
             'tra3'=>$tra3,
-            'tra4'=>$tra4
+            'tra4'=>$tra4,
+            'sen1'=>$sen1,
+            'sen2'=>$sen2,
+            'sen3'=>$sen3,
+            'sen4'=>$sen4,
+            'ins1'=>$ins1,
+            'ins2'=>$ins2,
+            'ins3'=>$ins3,
+            'ins4'=>$ins4
             ]);
 
     }
