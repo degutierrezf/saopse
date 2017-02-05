@@ -133,9 +133,6 @@
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-chevron-down"></i>
                 </button>
-
-                <button type="button" class="btn btn-box-tool"><i class="fa fa-plus"></i>
-                </button>
               </div>
               <!-- /.box-tools -->
             </div>
@@ -204,9 +201,6 @@
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-chevron-down"></i>
                 </button>
-
-                <button type="button" class="btn btn-box-tool"><i class="fa fa-plus"></i>
-                </button>
               </div>
               <!-- /.box-tools -->
             </div>
@@ -223,7 +217,45 @@
                 </tr>
                 </thead>
                 <tbody>
+                <?php  foreach ($tra1 as $tra1) { ?>
+                <tr>
+                    <td>2.</td>
+                    <td><?php echo $tra1->cantidad?></td>
+                    <td><?php echo $tra1->unidad?></td>
+                    <td><?php echo $tra1->material?></td>
+                    <th>$<?php echo $tra1->subtotal?></th>
+                </tr>
+                <?php }?>
 
+                <?php  foreach ($tra2 as $tra2) { ?>
+                <tr>
+                    <td>2.</td>
+                    <td><?php echo $tra2->cantidad?></td>
+                    <td>Hr.</td>
+                    <td><?php echo $tra2->maquinaria?></td>
+                    <th>$<?php echo $tra2->subtotal?></th>
+                </tr>
+                <?php }?>
+
+                <?php  foreach ($tra3 as $tra3) { ?>
+                <tr>
+                    <td>2.</td>
+                    <td><?php echo $tra3->cantidad?></td>
+                    <td>Hr.</td>
+                    <td><?php echo $tra3->personal?></td>
+                    <th>$<?php echo $tra3->subtotal?></th>
+                </tr>
+                <?php }?>
+
+                <?php  foreach ($tra4 as $tra4) { ?>
+                <tr>
+                    <td>2.</td>
+                    <td><?php echo $tra4->cantidad?></td>
+                    <td>Hr.</td>
+                    <td><?php echo $tra4->item?></td>
+                    <th>$<?php echo $tra4->valor?></th>
+                </tr>
+                <?php }?>
                 </tbody>
                 </table>
             </div>
@@ -236,9 +268,6 @@
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-chevron-down"></i>
-                </button>
-
-                <button type="button" class="btn btn-box-tool"><i class="fa fa-plus"></i>
                 </button>
               </div>
               <!-- /.box-tools -->
@@ -269,9 +298,6 @@
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-chevron-down"></i>
-                </button>
-
-                <button type="button" class="btn btn-box-tool"><i class="fa fa-plus"></i>
                 </button>
               </div>
               <!-- /.box-tools -->

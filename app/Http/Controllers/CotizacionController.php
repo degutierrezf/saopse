@@ -86,6 +86,29 @@ class CotizacionController extends Controller
             ->where('sp_actividad_id_actividad','=',2)
             ->get();
 
+        $tra1 = DB::table('sp_d_mat')
+            ->join('sp_materiales', 'id_materiales','=','sp_materiales_id_materiales')
+            ->where('sp_cotizacion_id_cotizacion','=',2)
+            ->where('sp_actividad_id_actividad','=',3)
+            ->get();
+
+        $tra2 = DB::table('sp_d_maq')
+            ->join('sp_maquinaria', 'id_maquinaria','=','sp_maquinaria_id_maquinaria')
+            ->where('sp_cotizacion_id_cotizacion','=',2)
+            ->where('sp_actividad_id_actividad','=',3)
+            ->get();
+
+        $tra3 = DB::table('sp_d_per')
+            ->join('sp_personal', 'id_personal','=','sp_personal_id_personal')
+            ->where('sp_cotizacion_id_cotizacion','=',2)
+            ->where('sp_actividad_id_actividad','=',3)
+            ->get();
+
+        $tra4 = DB::table('sp_otros')
+            ->where('sp_cotizacion_id_cotizacion','=',2)
+            ->where('sp_actividad_id_actividad','=',3)
+            ->get();
+
 
 
 
@@ -101,7 +124,11 @@ class CotizacionController extends Controller
             'mat1'=>$mat1,
             'mat2'=>$mat2,
             'mat3'=>$mat3,
-            'mat4'=>$mat4
+            'mat4'=>$mat4,
+            'tra1'=>$tra1,
+            'tra2'=>$tra2,
+            'tra3'=>$tra3,
+            'tra4'=>$tra4
             ]);
 
     }
