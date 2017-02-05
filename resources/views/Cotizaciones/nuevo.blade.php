@@ -31,10 +31,10 @@
         </div>
         <!-- /.col -->
         <div class="col-sm-6 invoice-col">
-          <strong>Señor(es): </strong>
-          <p>RUT: <br>
-          Giro:  <br>
-          Dirección: 
+          <strong>Señor(es): <?php echo $con -> nombre_conc; ?> </strong>
+          <p>RUT: <?php echo $con -> rut; ?><br>
+          Giro: <?php echo $con -> giro; ?><br>
+          Dirección: <?php echo $con -> direccion; ?>
           </p>
         </div>
         <!-- /.col -->

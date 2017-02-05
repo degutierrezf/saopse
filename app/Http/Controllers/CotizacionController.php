@@ -24,6 +24,10 @@ class CotizacionController extends Controller
 	{
     	//$id = $_POST['id_accidente'];
 
+        $con = DB::table('sp_concesiones')
+            ->where('id_conc','=',1)
+            ->first();
+
         $cot = DB::table('sp_cotizacion')
         ->where('id_cotizacion','=',2)
         ->first();
@@ -112,7 +116,9 @@ class CotizacionController extends Controller
 
 
 
-        return view('Cotizaciones.nuevo', ['cot'=>$cot, 
+        return view('Cotizaciones.nuevo', [
+            'con'=>$con,
+            'cot'=>$cot,
             'ac'=>$act, 
             'mat'=>$mat, 
             'per'=>$per, 
