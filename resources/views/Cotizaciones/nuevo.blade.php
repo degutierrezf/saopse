@@ -14,8 +14,8 @@
 <div class="row">
         <div class="col-xs-12">
           <h2 class="page-header">
-            Valorización N°: 
-            <small class="pull-right">Fecha: </small>
+            Valorización N°: <?php echo $con -> nombre_conc; ?>
+            <small class="pull-right">Fecha: <?php echo $con -> nombre_conc; ?></small>
           </h2>
         </div>
         <!-- /.col -->
