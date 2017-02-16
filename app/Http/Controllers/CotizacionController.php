@@ -67,6 +67,63 @@ class CotizacionController extends Controller
          ->where('sp_actividad_id_actividad','=',1)
          ->get();
 
+         $sum1 = DB::table('sp_d_mat')
+            ->where('sp_cotizacion_id_cotizacion','=', 1)
+             ->where('sp_actividad_id_actividad','=',2)
+            ->sum('subtotal');
+         $sum2 = DB::table('sp_d_maq')
+            ->where('sp_cotizacion_id_cotizacion','=', 1)
+             ->where('sp_actividad_id_actividad','=',2)
+            ->sum('subtotal');
+         $sum3 = DB::table('sp_d_per')
+            ->where('sp_cotizacion_id_cotizacion','=', 1)
+             ->where('sp_actividad_id_actividad','=',2)
+            ->sum('subtotal');
+         $sum4 = DB::table('sp_otros')
+            ->where('sp_cotizacion_id_cotizacion','=', 1)
+            ->where('sp_actividad_id_actividad','=',2)
+            ->sum('valor');
+
+                $sum5 = DB::table('sp_d_mat')
+                    ->where('sp_cotizacion_id_cotizacion','=', 1)
+                    ->where('sp_actividad_id_actividad','=',1)
+                    ->sum('subtotal');
+                $sum6 = DB::table('sp_d_maq')
+                    ->where('sp_cotizacion_id_cotizacion','=', 1)
+                    ->where('sp_actividad_id_actividad','=',1)
+                    ->sum('subtotal');
+                $sum7 = DB::table('sp_d_per')
+                    ->where('sp_cotizacion_id_cotizacion','=', 1)
+                    ->where('sp_actividad_id_actividad','=',1)
+                    ->sum('subtotal');
+                $sum8 = DB::table('sp_otros')
+                    ->where('sp_cotizacion_id_cotizacion','=', 1)
+                    ->where('sp_actividad_id_actividad','=',1)
+                    ->sum('valor');
+
+            $sum9 = DB::table('sp_d_mat')
+                ->where('sp_cotizacion_id_cotizacion','=', 1)
+                ->where('sp_actividad_id_actividad','=',3)
+                ->sum('subtotal');
+            $sum10 = DB::table('sp_d_maq')
+                ->where('sp_cotizacion_id_cotizacion','=', 1)
+                ->where('sp_actividad_id_actividad','=',3)
+                ->sum('subtotal');
+            $sum11 = DB::table('sp_d_per')
+                ->where('sp_cotizacion_id_cotizacion','=', 1)
+                ->where('sp_actividad_id_actividad','=',3)
+                ->sum('subtotal');
+            $sum12 = DB::table('sp_otros')
+                ->where('sp_cotizacion_id_cotizacion','=', 1)
+                ->where('sp_actividad_id_actividad','=',3)
+                ->sum('valor');
+
+         $sum_1 = $sum5 + $sum6 + $sum7 + $sum8;
+         $sum_2 = $sum1 + $sum2 + $sum3 + $sum4;
+         $sum_3 = $sum9 + $sum10 + $sum11 + $sum12;
+
+         $st = $sum_1 + $sum_2 + $sum_3;
+
         $mat1 = DB::table('sp_d_mat')
             ->join('sp_materiales', 'id_materiales','=','sp_materiales_id_materiales')
             ->where('sp_cotizacion_id_cotizacion','=',1)
@@ -188,7 +245,11 @@ class CotizacionController extends Controller
             'ins1'=>$ins1,
             'ins2'=>$ins2,
             'ins3'=>$ins3,
-            'ins4'=>$ins4
+            'ins4'=>$ins4,
+            'sm1'=>$sum_1,
+            'sm2'=>$sum_2,
+            'sm3'=>$sum_3,
+            'st'=>$st
             ]);
 
     }

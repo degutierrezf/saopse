@@ -14,8 +14,8 @@
 <div class="row">
         <div class="col-xs-12">
           <h2 class="page-header">
-            Valorización N°: <?php echo $con -> nombre_conc; ?>
-            <small class="pull-right">Fecha: <?php echo $con -> nombre_conc; ?></small>
+            Valorización N°: <?php echo $cot -> folio_cotizacion; ?>
+            <small class="pull-right">Fecha: <?php echo date('d M Y',strtotime($cot -> fecha)); ?></small>
           </h2>
         </div>
         <!-- /.col -->
@@ -59,7 +59,7 @@
     <hr>
   <div class="box box-primary collapsed-box">
             <div class="box-header with-border">
-              <h3 class="box-title">Remoción - $</h3>
+              <h3 class="box-title">Remoción - $<?php echo $sm1; ?></h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-chevron-down"></i>
@@ -128,7 +128,7 @@
 
     <div class="box box-primary collapsed-box">
             <div class="box-header with-border">
-              <h3 class="box-title">Materiales - $</h3>
+              <h3 class="box-title">Materiales - $<?php echo $sm2; ?></h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-chevron-down"></i>
@@ -196,7 +196,7 @@
 
     <div class="box box-primary collapsed-box">
             <div class="box-header with-border">
-              <h3 class="box-title">Transporte - $</h3>
+              <h3 class="box-title">Transporte - $<?php echo $sm3; ?></h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-chevron-down"></i>
@@ -400,9 +400,9 @@
 
       <div class="row invoice-info">
         <div class="col-sm-6 invoice-col">
-          <strong>NETO :</strong>
-          <p><strong>I.V.A.  :</strong><br>
-          <strong>TOTAL:</strong>
+          <strong>NETO : $<?php echo $st; ?></strong>
+          <p><strong>I.V.A.  : $<?php echo ($st*0.19); ?></strong><br>
+          <strong>TOTAL: $<?php echo (($st*0.19)+$st); ?></strong>
           </p>
         </div>
         <!-- /.col -->
