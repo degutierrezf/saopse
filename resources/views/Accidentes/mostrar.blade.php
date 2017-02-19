@@ -16,7 +16,7 @@
             <span class="info-box-icon bg-aqua"><i class="fa fa-tasks"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">N° Accidentes Totales</span>
+              <span class="info-box-text">N° Accidentes</span>
               <span class="info-box-number"> <?php echo $totales; ?> </span>
             </div>
             <!-- /.info-box-content -->
@@ -29,7 +29,7 @@
             <span class="info-box-icon bg-red"><i class="fa fa-close"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">N° Accidentes CON Daño</span>
+              <span class="info-box-text">Accidentes Daño</span>
               <span class="info-box-number"> <?php echo $d; ?> </span>
             </div>
             <!-- /.info-box-content -->
@@ -46,7 +46,7 @@
             <span class="info-box-icon bg-green"><i class="fa fa-check"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">N° Accidentes SIN Daño</span>
+              <span class="info-box-text">Accidentes SIN Daño</span>
               <span class="info-box-number"><?php echo $sd; ?></span>
             </div>
             <!-- /.info-box-content -->

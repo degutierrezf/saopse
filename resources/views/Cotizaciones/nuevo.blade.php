@@ -14,8 +14,8 @@
 <div class="row">
         <div class="col-xs-12">
           <h2 class="page-header">
-            Valorización N°: <?php echo $con -> nombre_conc; ?>
-            <small class="pull-right">Fecha: <?php echo $con -> nombre_conc; ?></small>
+            Valorización N°: <?php echo $cot -> folio_cotizacion; ?>
+            <small class="pull-right">Fecha: <?php echo date('d M Y',strtotime($cot -> fecha)); ?></small>
           </h2>
         </div>
         <!-- /.col -->
@@ -59,7 +59,7 @@
     <hr>
   <div class="box box-primary collapsed-box">
             <div class="box-header with-border">
-              <h3 class="box-title">Remoción - $</h3>
+              <h3 class="box-title">Remoción - $<?php echo $sm1; ?></h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-chevron-down"></i>
@@ -128,7 +128,7 @@
 
     <div class="box box-primary collapsed-box">
             <div class="box-header with-border">
-              <h3 class="box-title">Materiales - $</h3>
+              <h3 class="box-title">Materiales - $<?php echo $sm2; ?></h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-chevron-down"></i>
@@ -196,7 +196,7 @@
 
     <div class="box box-primary collapsed-box">
             <div class="box-header with-border">
-              <h3 class="box-title">Transporte - $</h3>
+              <h3 class="box-title">Transporte - $<?php echo $sm3; ?></h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-chevron-down"></i>
@@ -264,7 +264,7 @@
 
     <div class="box box-primary collapsed-box">
             <div class="box-header with-border">
-              <h3 class="box-title">Señalización - $</h3>
+              <h3 class="box-title">Señalización - $<?php echo $sm4; ?></h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-chevron-down"></i>
@@ -284,9 +284,47 @@
                   <th>TOTAL</th>
                 </tr>
                 </thead>
-                <tbody>
+                  <tbody>
+                  <?php  foreach ($sen1 as $sen1) { ?>
+                  <tr>
+                      <td>2.</td>
+                      <td><?php echo $sen1->cantidad?></td>
+                      <td><?php echo $sen1->unidad?></td>
+                      <td><?php echo $sen1->material?></td>
+                      <th>$<?php echo $sen1->subtotal?></th>
+                  </tr>
+                  <?php }?>
 
-                </tbody>
+                  <?php  foreach ($sen2 as $sen2) { ?>
+                  <tr>
+                      <td>2.</td>
+                      <td><?php echo $sen2->cantidad?></td>
+                      <td>Hr.</td>
+                      <td><?php echo $sen2->maquinaria?></td>
+                      <th>$<?php echo $sen2->subtotal?></th>
+                  </tr>
+                  <?php }?>
+
+                  <?php  foreach ($sen3 as $sen3) { ?>
+                  <tr>
+                      <td>2.</td>
+                      <td><?php echo $sen3->cantidad?></td>
+                      <td>Hr.</td>
+                      <td><?php echo $sen3->personal?></td>
+                      <th>$<?php echo $sen3->subtotal?></th>
+                  </tr>
+                  <?php }?>
+
+                  <?php  foreach ($sen4 as $sen4) { ?>
+                  <tr>
+                      <td>2.</td>
+                      <td><?php echo $sen4->cantidad?></td>
+                      <td>Hr.</td>
+                      <td><?php echo $sen4->item?></td>
+                      <th>$<?php echo $sen4->valor?></th>
+                  </tr>
+                  <?php }?>
+                  </tbody>
                 </table>
             </div>
             <!-- /.box-body -->
@@ -294,7 +332,7 @@
 
     <div class="box box-primary collapsed-box">
             <div class="box-header with-border">
-              <h3 class="box-title">Instalación - $</h3>
+              <h3 class="box-title">Instalación - $<?php echo $sm5; ?></h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-chevron-down"></i>
@@ -311,12 +349,50 @@
                   <th>CANTIDAD</th>
                   <th>UNIDAD</th>
                   <th>DETALLE</th>
-                  <th>TOTAL</th>
+                  <th>SUBTOTAL</th>
                 </tr>
                 </thead>
-                <tbody>
+                  <tbody>
+                  <?php  foreach ($ins1 as $ins1) { ?>
+                  <tr>
+                      <td>2.</td>
+                      <td><?php echo $ins1->cantidad?></td>
+                      <td><?php echo $ins1->unidad?></td>
+                      <td><?php echo $ins1->material?></td>
+                      <th>$<?php echo $ins1->subtotal?></th>
+                  </tr>
+                  <?php }?>
 
-                </tbody>
+                  <?php  foreach ($ins2 as $ins2) { ?>
+                  <tr>
+                      <td>2.</td>
+                      <td><?php echo $ins2->cantidad?></td>
+                      <td>Hr.</td>
+                      <td><?php echo $ins2->maquinaria?></td>
+                      <th>$<?php echo $ins2->subtotal?></th>
+                  </tr>
+                  <?php }?>
+
+                  <?php  foreach ($ins3 as $ins3) { ?>
+                  <tr>
+                      <td>2.</td>
+                      <td><?php echo $ins3->cantidad?></td>
+                      <td>Hr.</td>
+                      <td><?php echo $ins3->personal?></td>
+                      <th>$<?php echo $ins3->subtotal?></th>
+                  </tr>
+                  <?php }?>
+
+                  <?php  foreach ($ins4 as $ins4) { ?>
+                  <tr>
+                      <td>5.</td>
+                      <td><?php echo $ins4->cantidad?></td>
+                      <td><?php echo $ins4->unidad?></td>
+                      <td><?php echo $ins4->item?></td>
+                      <th>$<?php echo $ins4->subtotal?></th>
+                  </tr>
+                  <?php }?>
+                  </tbody>
                 </table>
             </div>
             <!-- /.box-body -->
@@ -324,9 +400,9 @@
 
       <div class="row invoice-info">
         <div class="col-sm-6 invoice-col">
-          <strong>NETO :</strong>
-          <p><strong>I.V.A.  :</strong><br>
-          <strong>TOTAL:</strong>
+          <strong>NETO : $<?php echo $st; ?></strong>
+          <p><strong>I.V.A.  : $<?php echo ($st*0.19); ?></strong><br>
+          <strong>TOTAL: $<?php echo (($st*0.19)+$st); ?></strong>
           </p>
         </div>
         <!-- /.col -->
@@ -411,7 +487,7 @@
       <div class="modal-footer">
         <div class="box-footer">
                     <button type="reset" class="btn btn-default">Limpiar Formulario</button>
-                    <button name="boton" type="submit" class="btn btn-info pull-right">Cargar Documento</button>
+                    <button name="boton" type="submit" class="btn btn-success pull-right">Cargar a la Valorización</button>
                 </div><!-- /.box-footer -->
                 </form>
       </div>
@@ -480,7 +556,7 @@
       <div class="modal-footer">
         <div class="box-footer">
                     <button type="reset" class="btn btn-default">Limpiar Formulario</button>
-                    <button name="boton" type="submit" class="btn btn-info pull-right">Cargar Documento</button>
+            <button name="boton" type="submit" class="btn btn-success pull-right">Cargar a la Valorización</button>
                 </div><!-- /.box-footer -->
                 </form>
       </div>
@@ -549,7 +625,7 @@
       <div class="modal-footer">
         <div class="box-footer">
                     <button type="reset" class="btn btn-default">Limpiar Formulario</button>
-                    <button name="boton" type="submit" class="btn btn-info pull-right">Cargar Documento</button>
+            <button name="boton" type="submit" class="btn btn-success pull-right">Cargar a la Valorización</button>
                 </div><!-- /.box-footer -->
                 </form>
       </div>
@@ -626,7 +702,7 @@
       <div class="modal-footer">
         <div class="box-footer">
                     <button type="reset" class="btn btn-default">Limpiar Formulario</button>
-                    <button name="boton" type="submit" class="btn btn-info pull-right">Cargar Documento</button>
+            <button name="boton" type="submit" class="btn btn-success pull-right">Cargar a la Valorización</button>
                 </div><!-- /.box-footer -->
                 </form>
       </div>

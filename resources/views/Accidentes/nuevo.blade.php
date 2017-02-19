@@ -201,7 +201,7 @@
 
 <div class="col-md-2">
     <a class="btn btn-app btn" href="/Accidentes/Mostrar">
-    <i class="fa fa-list-ul"></i> Ver lista de Incidentes
+    <i class="fa fa-list-ul"></i> Ver lista de Accidentes
     </a>
 </div>
 </div>

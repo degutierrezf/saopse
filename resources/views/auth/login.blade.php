@@ -1,14 +1,15 @@
 @extends('layouts.auth')
 
 @section('htmlheader_title')
-    Log in
+    Acceso
 @endsection
 
 @section('content')
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{ url('/home') }}"><b>Admin</b>LTE</a>
+            <center><img src="/img/logo_saopse.png" alt=""></center>
+            <a href="{{ url('/home') }}"><p>Gestor de Accidentes e Incidentes</p></a>
         </div><!-- /.login-logo -->
 
     @if (count($errors) > 0)
@@ -23,7 +24,8 @@
     @endif
 
     <div class="login-box-body">
-    <p class="login-box-msg"> {{ trans('adminlte_lang::message.siginsession') }} </p>
+
+
     <form action="{{ url('/login') }}" method="post">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="form-group has-feedback">
@@ -35,27 +37,21 @@
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
         <div class="row">
-            <div class="col-xs-8">
-                <div class="checkbox icheck">
-                    <label>
-                        <input type="checkbox" name="remember"> {{ trans('adminlte_lang::message.remember') }}
-                    </label>
-                </div>
-            </div><!-- /.col -->
-            <div class="col-xs-4">
-                <button type="submit" class="btn btn-primary btn-block btn-flat">{{ trans('adminlte_lang::message.buttonsign') }}</button>
+            <div class="col-xs-12">
+                <button type="submit" class="btn btn-success btn-block btn-flat">Ingresar</button>
             </div><!-- /.col -->
         </div>
     </form>
-
-    @include('auth.partials.social_login')
-
-    <a href="{{ url('/password/reset') }}">{{ trans('adminlte_lang::message.forgotpassword') }}</a><br>
-    <a href="{{ url('/register') }}" class="text-center">{{ trans('adminlte_lang::message.registermember') }}</a>
+        <br>
+    <a href="{{ url('/password/reset') }}">¿Olvidó su clave?</a><br>
+    <a href="{{ url('/register') }}" class="text-center">Soy un nuevo Usuario</a>
 
 </div><!-- /.login-box-body -->
 
 </div><!-- /.login-box -->
+
+
+        <center><strong>&copy; 2017 <a href="http://www.consultorait.cl">Consultora Informática Gutiérrez & Gutiérrez Ltda</a>.</strong></center>
 
     @include('layouts.partials.scripts_auth')
 

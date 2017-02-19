@@ -5,7 +5,7 @@
 @endsection
 
 @section('contentheader_title')
-	INCIDENTES - SAOPSE - SACYR OPERACIONES Y SERVICIOS CHILE
+	ACCIDENTES - SAOPSE - SACYR OPERACIONES Y SERVICIOS CHILE
 @endsection
 
 @section('main-content')
