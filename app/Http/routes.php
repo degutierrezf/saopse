@@ -50,6 +50,4 @@ Route::get('Concesiones', 'ConcesionesController@index');
 Route::get('Calendario', 'CalendarioController@index');
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');

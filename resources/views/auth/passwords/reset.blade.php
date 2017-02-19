@@ -6,10 +6,11 @@
 
 @section('content')
 
-    <body class="login-page">
+    <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{ url('/home') }}"><b>Admin</b>LTE</a>
+            <center><img src="/img/logo_saopse.png" alt=""></center>
+            <a href="{{ url('/home') }}"><p>Gestor de Accidentes e Incidentes</p></a>
         </div><!-- /.login-logo -->
 
         @if (session('status'))
@@ -30,7 +31,7 @@
         @endif
 
         <div class="login-box-body">
-            <p class="login-box-msg">{{ trans('adminlte_lang::message.passwordreset') }}</p>
+            <p class="login-box-msg">Reenviar Contraseña</p>
             <form action="{{ url('/password/reset') }}" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="token" value="{{ $token }}">
@@ -61,7 +62,6 @@
             </form>
 
             <a href="{{ url('/login') }}">Log in</a><br>
-            <a href="{{ url('/register') }}" class="text-center">{{ trans('adminlte_lang::message.membreship') }}</a>
 
         </div><!-- /.login-box-body -->
 

@@ -8,6 +8,12 @@ use App\Http\Requests;
 
 class FotografiasController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
    	public function index()
     {
         return view('Pic.index');

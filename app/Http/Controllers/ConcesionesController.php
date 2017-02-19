@@ -10,6 +10,12 @@ use DB;
 
 class ConcesionesController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
          $listado = DB::table('sp_ruta')
