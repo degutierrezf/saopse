@@ -21,6 +21,9 @@
         <ul class="sidebar-menu">
             <li class="header">Menú Principal</li>
             <li class="treeview">
+                <a href="/home"><i class='fa fa-home'></i> <span>Inicio</span> <i class="fa fa-angle-left pull-right"></i></a>
+            </li>
+            <li class="treeview">
                 <a href="#"><i class='fa fa-bell'></i> <span>Accidentes</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="/Accidentes/Nuevo">Nuevo</a></li>
