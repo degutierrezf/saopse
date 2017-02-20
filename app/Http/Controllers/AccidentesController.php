@@ -105,11 +105,15 @@ class AccidentesController extends Controller
             ->where('sp_incidentes_id_incidentes','=', $id_acc)
             ->get();
 
-        $gestiones = DB::table('sp_gestiones_i')
-            ->where('sp_incidentes_id_incidentes','=', $id_acc)
-            ->get();
+        $gestiones = DB::table('sp_gestiones')
+            ->where([
+                ['ac_o_in','=', 1],
+                ['id_in_o_ac','=', $id_acc],
+                ['estado', '=', 1],
+            ])->get();
 
-        return view('Accidentes.detalles',['inc'=>$listado, 'au'=>$automoviles, 'doc'=>$documentos, 'ft'=>$fotografias, 'gt'=>$gestiones]);
+
+        return view('Accidentes.detalles',['inc'=>$listado, 'au'=>$automoviles, 'doc'=>$documentos, 'ft'=>$fotografias, 'ges'=>$gestiones]);
     }
 
      public function GuardarNuevo()
