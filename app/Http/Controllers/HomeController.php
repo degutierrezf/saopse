@@ -9,6 +9,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use DB;
 
 /**
  * Class HomeController
@@ -33,6 +34,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        //Estado 1 Realizado, 2 Por Realizar, 3 Eliminado
+        $date = date('Y-m-d');
+
+        $gestiones = DB::table('sp_gestiones')
+            ->where([
+                ['fec_record','like', $date],
+                ['estado', '=', 2]])
+            ->get();
+
+        return view('home', ['ges'=>$gestiones]);
     }
 }

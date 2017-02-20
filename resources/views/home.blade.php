@@ -130,7 +130,7 @@
 	<section class="content-header">
 		<h1>
 			Agenda
-			<small>Actividades Programadas</small>
+			<small>Actividades programadas para el día</small>
 		</h1>
 	</section>
 
@@ -143,72 +143,31 @@
 				<!-- timeline time label -->
 				<li class="time-label">
                   <span class="bg-red">
-                    19 Feb. 2017
+                    <?php echo date('d-M-Y'); ?>
                   </span>
 				</li>
 				<!-- /.timeline-label -->
 				<!-- timeline item -->
+                <?php  foreach ($ges as $ges) { ?>
 				<li>
 					<i class="fa fa-envelope bg-blue"></i>
 
 					<div class="timeline-item">
-						<span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+						<span class="time">Creado el: <i class="fa fa-clock-o"></i> <?php echo date('d-M-Y H:i:s', strtotime($ges->fec_crea))?></span>
 
-						<h3 class="timeline-header"><a href="#">Incidente N° - 1</a> Contactar al liquidador</h3>
+						<h3 class="timeline-header"><a href="#"><?php if($ges->ac_o_in == 1){echo 'Accidente'; }else{echo 'Incidente';  }  ?> N° - <?php echo $ges->id_in_o_ac?></a> <?php echo $ges->asunto?></h3>
 
 						<div class="timeline-body">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi commodi cumque ea, eligendi enim facere illum in, ipsa laborum modi nam nihil nulla provident repudiandae sit. Ab aperiam optio voluptate.
+                            <?php echo $ges->texto?>
 						</div>
 						<div class="timeline-footer">
 							<a class="btn btn-primary btn-flat btn-xs"><i class="fa fa-check"></i> Gestión Realizada</a>
-							<a class="btn btn-warning btn-xs"><i class="fa fa-clock-o"></i> Asignar Nueva Fecha</a>
-							<a class="btn btn-danger btn-xs"><i class="fa fa-close"></i> Eliminar Gestión</a>
+							<a class="btn btn-warning btn-flat btn-xs"><i class="fa fa-clock-o"></i> Asignar Nueva Fecha</a>
+							<a class="btn btn-danger btn-flat btn-xs"><i class="fa fa-close"></i> Eliminar Gestión</a>
 						</div>
 					</div>
 				</li>
-				<!-- END timeline item -->
-				<!-- timeline item -->
-				<li>
-					<i class="fa fa-file-pdf-o bg-blue"></i>
-
-					<div class="timeline-item">
-						<span class="time"><i class="fa fa-clock-o"></i> 16:03</span>
-
-						<h3 class="timeline-header"><a href="#">Accidente N° - 6</a> Enviar Cotización al Usuario</h3>
-
-						<div class="timeline-body">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi commodi cumque ea, eligendi enim facere illum in, ipsa laborum modi nam nihil nulla provident repudiandae sit. Ab aperiam optio voluptate.
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis cum doloribus eaque, eius enim error esse fugiat impedit incidunt neque nulla officiis quae quaerat quidem quis saepe sunt tempora vitae.
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci ipsam modi nesciunt perferendis quaerat quam ratione saepe. Autem eligendi maiores porro quod, sit voluptatum! In maiores necessitatibus reiciendis voluptate voluptatem!
-						</div>
-						<div class="timeline-footer">
-							<a class="btn btn-primary btn-flat btn-xs"><i class="fa fa-check"></i> Gestión Realizada</a>
-							<a class="btn btn-warning btn-xs"><i class="fa fa-clock-o"></i> Asignar Nueva Fecha</a>
-							<a class="btn btn-danger btn-xs"><i class="fa fa-close"></i> Eliminar Gestión</a>
-						</div>
-					</div>
-				</li>
-				<!-- END timeline item -->
-				<!-- timeline item -->
-				<li>
-					<i class="fa fa-paperclip bg-blue"></i>
-
-					<div class="timeline-item">
-						<span class="time"><i class="fa fa-clock-o"></i> 17:22</span>
-
-						<h3 class="timeline-header"><a href="#">Accidente N° - 7</a> Solicitar Soap del Vehículo</h3>
-
-						<div class="timeline-body">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi commodi cumque ea, eligendi enim facere illum in, ipsa laborum modi nam nihil nulla provident repudiandae sit. Ab aperiam optio voluptate.
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus animi commodi corporis deleniti, doloribus ea eligendi ex hic incidunt ipsa nemo odio odit porro praesentium sed, tempore ullam vitae, voluptatem.
-						</div>
-						<div class="timeline-footer">
-							<a class="btn btn-primary btn-flat btn-xs"><i class="fa fa-check"></i> Gestión Realizada</a>
-							<a class="btn btn-warning btn-xs"><i class="fa fa-clock-o"></i> Asignar Nueva Fecha</a>
-							<a class="btn btn-danger btn-xs"><i class="fa fa-close"></i> Eliminar Gestión</a>
-						</div>
-					</div>
-				</li>
+            	<?php }  ?>
 				<!-- END timeline item -->
 			</ul>
 		</div>

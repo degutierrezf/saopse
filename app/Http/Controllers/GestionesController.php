@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use View;
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests;
 
 use DB;
@@ -30,19 +31,31 @@ class GestionesController extends Controller
 
     public function GuardarNuevo(){
 
-    	$id = $_POST['id_incidente'];
-    	$tipo = $_POST['tipo_gestion'];
-    	$desc = $_POST['d_gestion'];
-    	$fecha = date("Y-m-d H:m:s");
+        $id_acc = $_POST['id_accidente'];
+    	$asunto = $_POST['asunto'];
+    	$texto = $_POST['mensaje'];
+    	$fec_rec = $_POST['fecha'];
+    	$ac_o_in = $_POST['tipo'];
 
-    	DB::table('sp_gestiones_i')->insert(
-            [   'fecha' => $fecha,
-                'tipo_gestion' => $tipo,
-                'gestion' => $desc,
-                'sp_incidentes_id_incidentes' => $id]
+    	if($fec_rec == ''){
+    	    // Sin agenda, gestión realizada.
+            $estado = 1;
+        }else{
+    	    // Para agendar, gestion por realizar.
+    	    $estado = 2;
+        }
+
+
+    	DB::table('sp_gestiones')->insert(
+            [   'asunto' => $asunto,
+                'texto' => $texto,
+                'fec_record' => $fec_rec,
+                'ac_o_in' => $ac_o_in,
+                'id_in_o_ac' => $id_acc,
+                'estado' => $estado]
         );
 
-        return view('Incidentes.Index');
+    	return Redirect::action('AccidentesController@mostrar');
 
     }
 }
