@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('htmlheader_title')
-	Inicio
+	Detalle Accidente
 @endsection
 
 @section('contentheader_title')
@@ -22,113 +22,80 @@
       </div>
       <!-- info row -->
       <div class="row invoice-info">
-        <div class="col-sm-4 invoice-col">
-          <strong>ANTECEDENTES:</strong>
-          <table class="table table-striped">
-          	<tr>
-          		<td><b>ID</b></td>
-          		<td>:</td>
-          		<td>NDI-CVAL-CC <?php echo $inc->id_accidente?></td>
-          	</tr>
-          	<tr>
-          		<td><b>FOLIO</b></td>
-          		<td>:</td>
-          		<td>NDI-CVAL-CC <?php echo $inc->num_acc_mes?></td>
-          	</tr>
-          	<tr>
-          		<td><b>PK</b></td>
-          		<td>:</td>
-          		<td><?php echo $inc->pk1?>+<?php echo $inc->pk2?></td>
-          	</tr>
-          	 <tr>
-          		<td><b>CALZADA</b></td>
-          		<td>:</td>
-          		<td><?php echo $inc->calzada?></td>
-          	</tr>
-          	<tr>
-          		<td><b>SENTIDO</b></td>
-          		<td>:</td>
-          		<td><?php echo $inc->sentido?></td>
-          	</tr>
-          </table>
+        <div class="col-sm-3 invoice-col">
+            <img src="/img/logo_saopse.png" alt="">
         </div>
         <!-- /.col -->
-        <div class="col-sm-4 invoice-col">
-          <strong>INCIDENTE:</strong>
-          <table class="table table-striped">
-          	<tr>
-          		<td><b>TIPO INCIDENTE</b></td>
-          		<td>:</td>
-          		<td><?php echo $inc->tipo_acc?></td>
-          	</tr>
-          	<tr>
-          		<td><b>DAÑOS</b></td>
-          		<td>:</td>
-          		<td><?php echo $inc->dannos?></td>
-          	</tr>
-          	<tr>
-          		<td><b>ESTADO</b></td>
-          		<td>:</td>
-          		<td><?php echo $inc->estados?></td>
-          	</tr>
-          </table>
-        </div>
-        <!-- /.col -->
-        <div class="col-sm-4 invoice-col">
-          <strong>GESTIÓN:</strong>
-          <table class="table table-striped">
-          	<tr>
-          		<td><form action="{{ url('Autos/Nuevo') }}" role="form" method="POST">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="hidden" name="id_accidente" value="<?php echo $inc->id_accidente?>">
-                        <button type="submit" >AGREGAR AUTO INVOLUCRADO</button>
-                  </form>
-              </td>
-          	</tr>
-          	<tr>
-          		<td><form action="{{ url('Documentos/Cargar') }}" role="form" method="POST">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="hidden" name="id_accidente" value="<?php echo $inc->id_accidente?>">
-                        <button type="submit" >AGREGAR NUEVO DOCUMENTO</button>
-                  </form>
-              </td>
-          	</tr>
-          	<tr>
-          		              <td><form action="{{ url('Fotos/Cargar') }}" role="form" method="POST">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="hidden" name="id_accidente" value="<?php echo $inc->id_accidente?>">
-                        <button type="submit" >AGREGAR NUEVAS FOTOGRAFíAS</button>
-                  </form>
-              </td>
-          	</tr>
+        <div class="col-sm-5 invoice-col">
+            <strong>ANTECEDENTES:</strong>
+            <table class="table table-striped">
+                <tr>
+                    <td><b>ID</b></td>
+                    <td>:</td>
+                    <td>NDI-CVAL-CC <?php echo $inc->id_accidente?></td>
+                </tr>
+                <tr>
+                    <td><b>FOLIO</b></td>
+                    <td>:</td>
+                    <td>NDI-CVAL-CC <?php echo $inc->num_acc_mes?></td>
+                </tr>
+                <tr>
+                    <td><b>PK</b></td>
+                    <td>:</td>
+                    <td><?php echo $inc->pk1?>+<?php echo $inc->pk2?></td>
+                </tr>
+                <tr>
+                    <td><b>CALZADA</b></td>
+                    <td>:</td>
+                    <td><?php echo $inc->calzada?></td>
+                </tr>
+                <tr>
+                    <td><b>SENTIDO</b></td>
+                    <td>:</td>
+                    <td><?php echo $inc->sentido?></td>
+                </tr>
+            </table>
 
-            <tr>
-              <td><form action="{{ url('Gestiones/Nuevo') }}" role="form" method="POST">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="hidden" name="id_accidente" value="<?php echo $inc->id_accidente?>">
-                        <button type="submit" >AGREGAR NUEVAS GESTIONES</button>
-                  </form>
-              </td>
-            </tr>
-            <tr>
-              <td><form action="{{ url('Cotizacion/Nuevo') }}" role="form" method="POST">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="hidden" name="id_accidente" value="<?php echo $inc->id_accidente?>">
-                        <button type="submit" >AGREGAR COTIZACIÓN</button>
-                  </form>
-                  <form action="{{ url('Cotizacion/Nuevo') }}" role="form" method="POST">
-                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                      <input type="hidden" name="id_accidente" value="<?php echo $inc->id_accidente?>">
-                      <button type="submit" >GENERAR CARTA</button>
-                  </form>
-              </td>
-            </tr>
-          </table>
+        </div>
+        <!-- /.col -->
+        <div class="col-sm-4 invoice-col">
+            <strong>ACCIDENTE:</strong>
+            <table class="table table-striped">
+                <tr>
+                    <td><b>TIPO INCIDENTE</b></td>
+                    <td>:</td>
+                    <td><?php echo $inc->tipo_acc?></td>
+                </tr>
+                <tr>
+                    <td><b>DAÑOS</b></td>
+                    <td>:</td>
+                    <td><?php echo $inc->dannos?></td>
+                </tr>
+                <tr>
+                    <td><b>ESTADO</b></td>
+                    <td>:</td>
+                    <td><?php echo $inc->estados?></td>
+                </tr>
+            </table>
+            <center>
+
+                <button type="button" class="btn btn-xs"><i class="fa fa-envelope-o"></i> Generar Carta de Cobro</button>&nbsp;&nbsp;&nbsp;
+
+                <button type="button" class="btn btn-xs"><i class="fa fa-file-pdf-o"></i> Generar Cotización</button>
+                <br><br>
+                <button type="button" class="btn btn-success btn-xs"><i class="fa fa-file-pdf-o"></i> Imprimir Informe</button>
+
+                <button type="button" class="btn btn-primary btn-xs"><i class="fa fa-file-pdf-o"></i> Imprimir en PDF</button>
+
+            </center>
         </div>
         <!-- /.col -->
       </div>
       <!-- /.row -->
 
+    <center><h2>FORMULARIO FICHA DE ACCIDENTES</h2></center>
+
+    <hr>
     <center>
         <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#materiales"><i class="fa fa-plus"></i> Agregar Vehículos Involucrados</button>
 
@@ -138,7 +105,7 @@
 
         <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#maquinaria"><i class="fa fa-plus"></i> Agregar Fotografías</button>
 
-        <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#otros"><i class="fa fa-plus"></i> Agregar Gestiones</button>
+        <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#gestiones"><i class="fa fa-pencil"></i> Agregar Gestiones</button>
     </center>
 
 		<hr>
