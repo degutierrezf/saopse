@@ -313,18 +313,16 @@
                         </div>
 
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    </div><!-- /.box-body -->
-
-
             </div>
             <div class="modal-footer">
                 <div class="box-footer">
                     <button type="reset" class="btn btn-default">Limpiar Formulario</button>
                     <button name="boton" type="submit" class="btn btn-danger pull-right">Agregar Gestión</button>
                 </div><!-- /.box-footer -->
-                </form>
             </div>
+                </form>
         </div>
+     </div>
     </div>
 </div>
 @endsection

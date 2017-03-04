@@ -39,10 +39,10 @@ class HomeController extends Controller
 
         $gestiones = DB::table('sp_gestiones')
             ->where([
-                ['fec_record','like', $date],
+                ['fec_record', 'like', $date],
                 ['estado', '=', 2]])
             ->get();
 
-        return view('home', ['ges'=>$gestiones]);
+        return view('home', ['ges' => $gestiones]);
     }
 }

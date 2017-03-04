@@ -21,7 +21,10 @@
         <ul class="sidebar-menu">
             <li class="header">Menú Principal</li>
             <li class="treeview">
-                <a href="#"><i class='fa fa-link'></i> <span>Accidentes</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="/home"><i class='fa fa-home'></i> <span>Inicio</span> <i class="fa fa-angle-left pull-right"></i></a>
+            </li>
+            <li class="treeview">
+                <a href="#"><i class='fa fa-bell'></i> <span>Accidentes</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="/Accidentes/Nuevo">Nuevo</a></li>
                     <li><a href="/Accidentes/Mostrar">Listar</a></li>
@@ -30,7 +33,7 @@
             </li>
 
                         <li class="treeview">
-                <a href="#"><i class='fa fa-link'></i> <span>Incidentes</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-bell-o'></i> <span>Incidentes</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="/Incidentes/Nuevo">Nuevo</a></li>
                     <li><a href="/Incidentes/Mostrar">Listar</a></li>
@@ -40,7 +43,7 @@
 
             <li class="header">Menú Gestión</li>
             <li class="treeview">
-                <a href="#"><i class='fa fa-link'></i> <span>General</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-gear'></i> <span>Ajustes</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="/Concesiones">Gestión Concesionarias</a></li>
                     <li><a href="/Aseguradoras">Gestión Aseguradoras</a></li>
