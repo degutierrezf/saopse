@@ -100,23 +100,27 @@
         </div>
         <!-- /.row -->
 
-        <center><h2>FORMULARIO FICHA DE ACCIDENTES</h2></center>
+        <center><h2>FORMULARIO FICHA COMPLEMENTARIA DE ACCIDENTES</h2></center>
 
         <hr>
         <center>
-            <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#materiales"><i
+            <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#autos"><i
                         class="fa fa-plus"></i> Agregar Vehículos Involucrados
             </button>
 
-            <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#personal"><i
+            <button type="button" class="btn btn- btn-xs" data-toggle="modal" data-target="#personas"><i
+                        class="fa fa-users"></i> Agregar Personas Involucrados
+            </button>
+
+            <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#docs"><i
                         class="fa fa-plus"></i> Agregar Documentos
             </button>
 
-            <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#maquinaria"><i
+            <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#croquis"><i
                         class="fa fa-plus"></i> Agregar Croquis Accidente
             </button>
 
-            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#maquinaria"><i
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#fotografias"><i
                         class="fa fa-plus"></i> Agregar Fotografías
             </button>
 
@@ -130,7 +134,7 @@
         <div class="row">
             <div class="col-xs-12 table-responsive">
                 <p class="lead"><i class="fa fa-car"></i> <b>VEHÍCULOS INVOLUCRADOS:</b>
-                    <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#materiales">
+                    <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#autos">
                         <i class="fa fa-automobile"></i> Agregar
                     </button>
                 </p>
@@ -145,7 +149,7 @@
                         <th>Fono Contacto</th>
                         <th>N° Póliza</th>
                         <th>Aseguradora</th>
-                        <th>Detalles</th>
+                        <th>¿Daños?</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -160,6 +164,43 @@
                         <td><?php echo $cs->num_poliza?></td>
                         <td><?php echo $cs->nombre_aseg?></td>
                         <td><?php echo $cs->dannos_v?></td>
+                    </tr>
+                    <?php }  ?>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.col -->
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-xs-12 table-responsive">
+                <p class="lead"><i class="fa fa-users"></i> <b>PERSONAS INVOLUCRADAS:</b>
+                    <button type="button" class="btn btn- btn-xs" data-toggle="modal" data-target="#personas">
+                        <i class="fa fa-users"></i> Agregar
+                    </button>
+                </p>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Edad</th>
+                        <th>Domicilio</th>
+                        <th>Teléfono</th>
+                        <th>Rut</th>
+                        <th>Consecuencia</th>
+                        <th>Daños Ocasionados</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php  foreach ($au as $cs) { ?>
+                    <tr>
+                        <td></td>
+                        <td><?php echo $cs->marca?> <?php echo $cs->modelo?></td>
+                        <td><?php echo $cs->placa?></td>
+                        <td><?php echo $cs->propietario?></td>
+                        <td><?php echo $cs->rut_prop?></td>
+                        <td><?php echo $cs->fono?></td>
+                        <td><?php echo $cs->num_poliza?></td>
                     </tr>
                     <?php }  ?>
                     </tbody>
@@ -193,7 +234,7 @@
         <div class="row">
             <div class="col-xs-12 table-responsive">
                 <p class="lead"><i class="fa fa-file"></i> <b>DOCUMENTOS:</b>
-                    <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#materiales">
+                    <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#docs">
                         <i class="fa fa-file"></i> Agregar
                     </button>
                 </p>
@@ -225,7 +266,7 @@
         <div class="row">
             <div class="col-xs-12 table-responsive">
                 <p class="lead"><i class="fa fa-photo"></i> <b>CROQUIS ACCIDENTE:</b>
-                    <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#materiales"><i
+                    <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#croquis"><i
                                 class="fa fa-photo"></i> Agregar
                     </button>
                 </p>
@@ -244,7 +285,7 @@
         <div class="row">
             <div class="col-xs-12 table-responsive">
                 <p class="lead"><i class="fa fa-photo"></i> <b>REGISTRO FOTOGRÁFICO:</b>
-                    <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#materiales">
+                    <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#fotografias">
                         <i class="fa fa-photo"></i> Agregar
                     </button>
                 </p>
@@ -295,7 +336,7 @@
         <!-- this row will not appear when printing -->
         <div class="row no-print">
             <div class="col-xs-12">
-                <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i>
+                <a href="/Accidentes/Form" target="_blank" class="btn btn-default"><i class="fa fa-print"></i>
                     Imprimir Ficha</a>
                 <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
                     <i class="fa fa-download"></i> Generar Informe en PDF
@@ -303,6 +344,381 @@
             </div>
         </div>
     </section>
+
+    <div class="modal fade" id="personas"
+         tabindex="-1" role="dialog"
+         aria-labelledby="favoritesModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close"
+                            data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"
+                        id="favoritesModalLabel">Personas Involucradas</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" name="form" action="{{ url('Personas/Guardar') }}" role="form"
+                          method="POST" enctype="multipart/form-data">
+                        <div class="box-body">
+
+                            <P>Agregar personas involucradas al informe.</P>  <br>
+
+                            <input type="hidden" name="id_accidente" value="<?php echo $inc->id_accidente?>">
+                            {{--Tipo Accidente(1) o Incidente(2)--}}
+                            <input type="hidden" name="tipo" value="1">
+
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="col-sm-2 control-label">Rut:</label>
+                                <div class="col-sm-4">
+                                    <input class="form-control pull-right" type="text" name="placa" required>
+                                </div>
+                                <label for="exampleInputEmail1" class="col-sm-2 control-label">Edad:</label>
+                                <div class="col-sm-4">
+                                    <input class="form-control pull-right" type="text" name="rut" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="col-sm-2 control-label">Nombre:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control pull-right" type="text" name="propietario" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="col-sm-2 control-label">Dirección:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control pull-right" type="text" name="direccion" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="col-sm-2 control-label">Comuna:</label>
+                                <div class="col-sm-4">
+                                    <input class="form-control pull-right" type="text" name="comuna" required>
+                                </div>
+                                <label for="exampleInputEmail1" class="col-sm-2 control-label">Teléfono:</label>
+                                <div class="col-sm-4">
+                                    <input class="form-control pull-right" type="text" name="fono" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="col-sm-2 control-label">Celular:</label>
+                                <div class="col-sm-3">
+                                    <input class="form-control pull-right" type="text" name="celular" required>
+                                </div>
+                                <label for="exampleInputEmail1" class="col-sm-2 control-label">Correo:</label>
+                                <div class="col-sm-5">
+                                    <input class="form-control pull-right" type="text" name="correo" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="col-sm-2 control-label">Daños Ocasionados:</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control pull-right" name="mensaje" id="" cols="10" rows="5"
+                                              required></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="col-sm-2 control-label">Consecuencia:</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control pull-right" name="aseguradora">
+                                        <option class="form-control pull-right" value="1">Muerte</option>
+                                        <option class="form-control pull-right" value="2">Grave</option>
+                                        <option class="form-control pull-right" value="3">Menos Grave</option>
+                                        <option class="form-control pull-right" value="4">Lesiones Leves</option>
+                                        <option class="form-control pull-right" value="5">Ileso</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        </div><!-- /.box-body -->
+                </div>
+                <div class="modal-footer">
+                    <div class="box-footer">
+                        <button type="reset" class="btn btn-default">Limpiar Formulario</button>
+                        <button name="boton" type="submit" class="btn btn- pull-right">Agregar Persona</button>
+                    </div><!-- /.box-footer -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="autos"
+         tabindex="-1" role="dialog"
+         aria-labelledby="favoritesModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close"
+                            data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"
+                        id="favoritesModalLabel">Vehículos Involucrados</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" name="form" action="{{ url('Autos/Guardar') }}" role="form"
+                          method="POST" enctype="multipart/form-data">
+                        <div class="box-body">
+
+                            <P>Agregar vehículos involucrados al informe.</P>  <br>
+
+                            <input type="hidden" name="id_accidente" value="<?php echo $inc->id_accidente?>">
+                            {{--Tipo Accidente(1) o Incidente(2)--}}
+                            <input type="hidden" name="tipo" value="1">
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="col-sm-2 control-label">Marca:</label>
+                                <div class="col-sm-4">
+                                    <input class="form-control pull-right" type="text" name="marca" required>
+                                </div>
+                                <label for="exampleInputEmail1" class="col-sm-2 control-label">Modelo:</label>
+                                <div class="col-sm-4">
+                                    <input class="form-control pull-right" type="text" name="modelo" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="col-sm-2 control-label">Placa:</label>
+                                <div class="col-sm-4">
+                                    <input class="form-control pull-right" type="text" name="placa" required>
+                                </div>
+                                <label for="exampleInputEmail1" class="col-sm-2 control-label">RUT:</label>
+                                <div class="col-sm-4">
+                                    <input class="form-control pull-right" type="text" name="rut" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="col-sm-2 control-label">Nombre Dueño:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control pull-right" type="text" name="propietario" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="col-sm-2 control-label">Dirección:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control pull-right" type="text" name="direccion" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="col-sm-2 control-label">Comuna:</label>
+                                <div class="col-sm-4">
+                                    <input class="form-control pull-right" type="text" name="comuna" required>
+                                </div>
+                                <label for="exampleInputEmail1" class="col-sm-2 control-label">Teléfono:</label>
+                                <div class="col-sm-4">
+                                    <input class="form-control pull-right" type="text" name="fono" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="col-sm-2 control-label">Celular:</label>
+                                <div class="col-sm-4">
+                                    <input class="form-control pull-right" type="text" name="celular" required>
+                                </div>
+                                <label for="exampleInputEmail1" class="col-sm-2 control-label">Correo:</label>
+                                <div class="col-sm-4">
+                                    <input class="form-control pull-right" type="text" name="correo" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="col-sm-2 control-label">¿Daños?:</label>
+                                <div class="col-sm-4">
+                                    <input class="form-control pull-right" type="text" name="d_dannos" required>
+                                </div>
+                                <label for="exampleInputEmail1" class="col-sm-2 control-label">Nº Póliza:</label>
+                                <div class="col-sm-4">
+                                    <input class="form-control pull-right" type="text" name="poliza" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="col-sm-2 control-label">Daños Vehículo:</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control pull-right" name="mensaje" id="" cols="10" rows="5"
+                                              required></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="col-sm-2 control-label">Aseguradora:</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control pull-right" name="aseguradora">
+                                        <?php  foreach ($aseg as $as) { ?>
+                                        <option class="form-control pull-right" value="<?php echo $as->id_aseguradora ?>"><?php echo $as->nombre_aseg ?></option>
+                                        <?php }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        </div><!-- /.box-body -->
+                </div>
+                <div class="modal-footer">
+                    <div class="box-footer">
+                        <button type="reset" class="btn btn-default">Limpiar Formulario</button>
+                        <button name="boton" type="submit" class="btn btn-success pull-right">Agregar Documento</button>
+                    </div><!-- /.box-footer -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="docs"
+         tabindex="-1" role="dialog"
+         aria-labelledby="favoritesModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close"
+                            data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"
+                        id="favoritesModalLabel">Documentos</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" name="form" action="{{ url('Gestiones/Guardar') }}" role="form"
+                          method="POST" enctype="multipart/form-data">
+                        <div class="box-body">
+
+                            <P>Agregar documentos al informe.</P>  <br>
+
+                            <input type="hidden" name="id_accidente" value="<?php echo $inc->id_accidente?>">
+                            {{--Tipo Accidente(1) o Incidente(2)--}}
+                            <input type="hidden" name="tipo" value="1">
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="col-sm-2 control-label">Nombre Doc:</label>
+                                <div class="col-sm-8">
+                                    <input class="form-control pull-right" type="text" name="asunto" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="col-sm-2 control-label">Archivo:</label>
+                                <div class="col-sm-8">
+                                    <input type="file" name="file">
+                                </div>
+                            </div>
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        </div><!-- /.box-body -->
+                </div>
+                <div class="modal-footer">
+                    <div class="box-footer">
+                        <button type="reset" class="btn btn-default">Limpiar Formulario</button>
+                        <button name="boton" type="submit" class="btn btn-success pull-right">Agregar Documento</button>
+                    </div><!-- /.box-footer -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="croquis"
+         tabindex="-1" role="dialog"
+         aria-labelledby="favoritesModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close"
+                            data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"
+                        id="favoritesModalLabel">Croquis Accidente</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" name="form" action="{{ url('Gestiones/Guardar') }}" role="form"
+                          method="POST" enctype="multipart/form-data">
+                        <div class="box-body">
+
+                            <P>Agregar croquis de accidente al informe.</P>  <br>
+
+                            <input type="hidden" name="id_accidente" value="<?php echo $inc->id_accidente?>">
+                            {{--Tipo Accidente(1) o Incidente(2)--}}
+                            <input type="hidden" name="tipo" value="1">
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="col-sm-2 control-label">Archivo:</label>
+                                <div class="col-sm-8">
+                                    <input type="file" name="file">
+                                </div>
+                            </div>
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        </div><!-- /.box-body -->
+                </div>
+                <div class="modal-footer">
+                    <div class="box-footer">
+                        <button type="reset" class="btn btn-default">Limpiar Formulario</button>
+                        <button name="boton" type="submit" class="btn btn-info pull-right">Agregar Croquis</button>
+                    </div><!-- /.box-footer -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="fotografias"
+         tabindex="-1" role="dialog"
+         aria-labelledby="favoritesModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close"
+                            data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"
+                        id="favoritesModalLabel">Fotografías</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" name="form" action="{{ url('Fotos/uploading') }}" role="form"
+                          method="POST" enctype="multipart/form-data">
+                        <div class="box-body">
+
+                            <P>Agregar nueva fotografía al informe.</P>  <br>
+
+                            <input type="hidden" name="id_accidente" value="<?php echo $inc->id_accidente?>">
+                            <input type="hidden" name="foto" value="foto">
+                            {{--Tipo Accidente(1) o Incidente(2)--}}
+                            <input type="hidden" name="tipo" value="1">
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="col-sm-2 control-label">Archivo:</label>
+                                <div class="col-sm-8">
+                                    <input type="file" name="archivo">
+                                </div>
+                            </div>
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        </div><!-- /.box-body -->
+                </div>
+                <div class="modal-footer">
+                    <div class="box-footer">
+                        <button type="reset" class="btn btn-default">Limpiar Formulario</button>
+                        <button name="boton" type="submit" class="btn btn-primary pull-right">Agregar Fotografía</button>
+                    </div><!-- /.box-footer -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="modal fade" id="gestiones"
          tabindex="-1" role="dialog"
@@ -354,8 +770,6 @@
 
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         </div><!-- /.box-body -->
-
-
                 </div>
                 <div class="modal-footer">
                     <div class="box-footer">

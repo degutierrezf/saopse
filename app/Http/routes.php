@@ -21,7 +21,9 @@ Route::post('Incidentes/GuardarNuevo', 'IncidentesController@GuardarNuevo');
 Route::get('Accidentes', 'AccidentesController@index');
 Route::get('Accidentes/Nuevo', 'AccidentesController@nuevo');
 Route::get('Accidentes/Mostrar', 'AccidentesController@mostrar');
+Route::get('Accidentes/Form', 'AccidentesController@form');
 Route::post('Accidentes/Detalles', 'AccidentesController@detalles');
+Route::post('Accidentes/Complemento', 'AccidentesController@complemento');
 Route::post('Accidentes/GuardarNuevo', 'AccidentesController@GuardarNuevo');
 
 Route::get('Cotizacion/Nuevo', 'CotizacionController@Nuevo');
@@ -49,5 +51,11 @@ Route::get('Concesiones', 'ConcesionesController@index');
 
 Route::get('Calendario', 'CalendarioController@index');
 
+
+Route::get('c1', 'AccidentesController@c1');
+Route::get('c2', 'AccidentesController@c2');
+Route::get('c3', 'AccidentesController@c3');
+Route::get('c4', 'AccidentesController@c4');
+Route::get('c5', 'AccidentesController@c5');
 
 Route::get('/', 'HomeController@index');

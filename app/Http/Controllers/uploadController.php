@@ -26,12 +26,12 @@ class uploadController extends Controller
 
     public function uploading(Request $request){
 
-        $id_inc = $_POST['id_incidente'];
+        $id_inc = $_POST['id_accidente'];
         $foto = $_POST['foto'];
 
         if ($foto == 'foto') {
             
-            $nombre = $_POST['nombre'];
+            $nombre = 'Foto';
             $file = $request->file('archivo');
             $destino = 'uploads';
             $string = str_random(6);

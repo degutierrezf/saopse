@@ -101,10 +101,16 @@
                   <td><?php echo $cs->pk1?> - <?php echo $cs->pk2?></td>
                   <td></td>
                   <th></th>
-                  <td><form action="{{ url('Accidentes/Detalles') }}" role="form" method="POST">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="hidden" name="id_accidente" value="<?php echo $cs->id_accidente?>">
-                        <button type="submit" >VER FICHA</button></form>
+                  <td>
+                      <form action="{{ url('Accidentes/Complemento') }}" role="form" method="POST">
+                          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                          <input type="hidden" name="id_accidente" value="<?php echo $cs->id_accidente?>">
+                          <button class="btn btn-danger btn-xs" type="submit" >Ficha Complementaria</button></form>
+
+                      <form action="{{ url('Accidentes/Detalles') }}" role="form" method="POST">
+                          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                          <input type="hidden" name="id_accidente" value="<?php echo $cs->id_accidente?>">
+                          <button class="btn btn-primary btn-xs" type="submit" >Documentos & Otros</button></form>
                   </td>
                 </tr>
                 <?php }

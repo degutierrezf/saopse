@@ -7,50 +7,64 @@
         @if (! Auth::guest())
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="{{asset('/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image" />
+                    <img src="{{asset('/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image"/>
                 </div>
                 <div class="pull-left info">
                     <p>{{ Auth::user()->name }}</p>
                     <!-- Status -->
-                    <a href="#"><i class="fa fa-circle text-success"></i> {{ trans('adminlte_lang::message.online') }}</a>
+                    <a href="#"><i class="fa fa-circle text-success"></i> {{ trans('adminlte_lang::message.online') }}
+                    </a>
                 </div>
             </div>
-        @endif
+            @endif
 
-        <!-- Sidebar Menu -->
-        <ul class="sidebar-menu">
-            <li class="header">Menú Principal</li>
-            <li class="treeview">
-                <a href="/home"><i class='fa fa-home'></i> <span>Inicio</span> <i class="fa fa-angle-left pull-right"></i></a>
-            </li>
-            <li class="treeview">
-                <a href="#"><i class='fa fa-bell'></i> <span>Accidentes</span> <i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="/Accidentes/Nuevo">Nuevo</a></li>
-                    <li><a href="/Accidentes/Mostrar">Listar</a></li>
-                    <li><a href="/Accidentes/Mostrar">Reportes</a></li>
-                </ul>
-            </li>
+                    <!-- Sidebar Menu -->
+            <ul class="sidebar-menu">
+                <li class="header">Menú Principal</li>
+                <li class="treeview">
+                    <a href="/home"><i class='fa fa-home'></i> <span>Inicio</span> <i
+                                class="fa fa-angle-left pull-right"></i></a>
+                </li>
+                <li class="treeview">
+                    <a href="#"><i class='fa fa-bell'></i> <span>Accidentes</span> <i
+                                class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                        <li><a href="/Accidentes/Nuevo">Nuevo</a></li>
+                        <li><a href="/Accidentes/Mostrar">Listar</a></li>
+                        <li><a href="/Accidentes/Mostrar">Reportes</a></li>
+                    </ul>
+                </li>
 
-                        <li class="treeview">
-                <a href="#"><i class='fa fa-bell-o'></i> <span>Incidentes</span> <i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="/Incidentes/Nuevo">Nuevo</a></li>
-                    <li><a href="/Incidentes/Mostrar">Listar</a></li>
-                    <li><a href="/Incidentes/Mostrar">Reportes</a></li>
-                </ul>
-            </li>
+                <li class="treeview">
+                    <a href="#"><i class='fa fa-bell-o'></i> <span>Incidentes</span> <i
+                                class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                        <li><a href="/Incidentes/Nuevo">Nuevo</a></li>
+                        <li><a href="/Incidentes/Mostrar">Listar</a></li>
+                        <li><a href="/Incidentes/Mostrar">Reportes</a></li>
+                    </ul>
+                </li>
 
-            <li class="header">Menú Gestión</li>
-            <li class="treeview">
-                <a href="#"><i class='fa fa-gear'></i> <span>Ajustes</span> <i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="/Concesiones">Gestión Concesionarias</a></li>
-                    <li><a href="/Aseguradoras">Gestión Aseguradoras</a></li>
-                    <li><a href="#">Gestión Perfiles</a></li>
-                </ul>
-            </li>
-        </ul><!-- /.sidebar-menu -->
+                <li class="treeview">
+                    <a href="#"><i class='fa fa-book'></i> <span>Agenda</span> <i
+                                class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                        <li><a href="/Agenda/Actividades">Actividades</a></li>
+                        <li><a href="/Agenda/Contactos">Contactos</a></li>
+                    </ul>
+                </li>
+
+                <li class="header">Menú Gestión</li>
+                <li class="treeview">
+                    <a href="#"><i class='fa fa-gear'></i> <span>Ajustes</span> <i
+                                class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                        <li><a href="/Concesiones">Gestión Concesionarias</a></li>
+                        <li><a href="/Aseguradoras">Gestión Aseguradoras</a></li>
+                        <li><a href="#">Gestión Perfiles</a></li>
+                    </ul>
+                </li>
+            </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->
 </aside>

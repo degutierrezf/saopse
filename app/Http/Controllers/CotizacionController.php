@@ -380,6 +380,6 @@ class CotizacionController extends Controller
                 'sp_actividad_id_actividad'=> $ac]
         );
 
-        return back();
+        return Redirect::action('AccidentesController@mostrar');
     }
 }

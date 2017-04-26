@@ -35,10 +35,10 @@ class AutosController extends Controller
        	public function GuardarNuevo()
     {
 
-    	$id = $_POST['id_incidente'];
+    	$id = $_POST['id_accidente'];
     	$marca = $_POST['marca'];
     	$modelo = $_POST['modelo'];
-    	$placa = $_POST['pp1'].'*'.$_POST['pp2'];
+    	$placa = $_POST['placa'];
     	$propietario = $_POST['propietario'];
     	$rut_prop = $_POST['rut'];
     	$direccion = $_POST['direccion'];
@@ -47,7 +47,7 @@ class AutosController extends Controller
     	$celular = $_POST['celular'];
     	$correo = $_POST['correo'];
     	$num_poliza = $_POST['poliza'];
-    	$danno_v = $_POST['r1'];
+    	$danno_v = $_POST['mensaje'];
     	$aseguradora = $_POST['aseguradora'];
     	$danno_d = $_POST['d_dannos'];
 
@@ -70,6 +70,6 @@ class AutosController extends Controller
                 'sp_incidentes_id_incidentes' => $id]
         );
 
-        return view('Incidentes.Index');
+        return back();
     }
 }

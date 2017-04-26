@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Http\Request;
-
+use Auth;
 use App\Http\Requests;
 
 use DB;
@@ -21,11 +22,39 @@ class AccidentesController extends Controller
         return view('Accidentes.index');
     }
 
+    public function c1(){
+
+        return view('Accidentes.cons_1');
+    }
+    public function c2(){
+
+        return view('Accidentes.cons_2');
+    }
+    public function c3(){
+
+        return view('Accidentes.cons_3');
+    }
+    public function c4(){
+
+        return view('Accidentes.cons_4');
+    }
+    public function c5(){
+
+        return view('Accidentes.cons_5');
+    }
+
     public function nuevo()
-	{
-    	$concesiones = DB::table('sp_ruta')
-            ->join('sp_concesiones', 'sp_concesiones_id_conc', '=', 'id_conc')
+    {
+
+        $concesiones = DB::table('sp_accesos')
+            ->join('sp_ruta','id_ruta','=','sp_ruta_id_ruta')
+            ->join('sp_concesiones','id_conc','=','sp_concesiones_id_conc')
+            ->where('users_id','=', Auth::id())
             ->get();
+
+        //$concesiones = DB::table('sp_ruta')
+        // ->join('sp_concesiones', 'sp_concesiones_id_conc', '=', 'id_conc')
+        // ->get();
 
         $comunas = DB::table('sp_comunas')
             ->get();
@@ -45,34 +74,83 @@ class AccidentesController extends Controller
         $info = DB::table('sp_resp_info')
             ->get();
 
-        return view('Accidentes.nuevo',['concesiones'=>$concesiones, 'comunas'=>$comunas, 
-            'dannos'=>$dannos, 'tipo'=>$tipo, 'cal'=>$calzada, 'sentido'=>$sentido, 'info'=>$info]);
+        return view('Accidentes.nuevo', ['concesiones' => $concesiones, 'comunas' => $comunas,
+            'dannos' => $dannos, 'tipo' => $tipo, 'cal' => $calzada, 'sentido' => $sentido, 'info' => $info]);
     }
 
     public function mostrar()
-	{
-    	 $totales = DB::table('sp_accidentes')->count();
+    {
+        $totales = DB::table('sp_accidentes')->count();
 
         $d = DB::table('sp_incidentes')
-                    ->where('dannos','=','Si')
-                    ->count();
+            ->where('dannos', '=', 'Si')
+            ->count();
 
         $sd = DB::table('sp_incidentes')
-                    ->where('dannos','=','No')
-                    ->count();
+            ->where('dannos', '=', 'No')
+            ->count();
 
         $a = DB::table('sp_accidentes')
-                    ->where('sp_estados_inc_id_estados','=',1)
-                    ->count();
+            ->where('sp_estados_inc_id_estados', '=', 1)
+            ->count();
 
         $listado = DB::table('sp_accidentes')
-            ->join('sp_ruta','sp_ruta_id_ruta','=','id_ruta')
-            ->join('sp_concesiones', 'sp_concesiones_id_conc','=', 'id_conc')
+            ->join('sp_ruta', 'sp_ruta_id_ruta', '=', 'id_ruta')
+            ->join('sp_concesiones', 'sp_concesiones_id_conc', '=', 'id_conc')
             ->get();
 
-        return view('Accidentes.mostrar', ['listado'=>$listado, 'totales'=>$totales, 'd'=>$d, 'sd'=>$sd, 'a'=>$a]);
+        return view('Accidentes.mostrar', ['listado' => $listado, 'totales' => $totales, 'd' => $d, 'sd' => $sd, 'a' => $a]);
     }
 
+    public function form(){
+
+        return view('Accidentes.form1_detalle');
+
+    }
+
+    public function complemento()
+    {
+
+        $id_acc = $_POST['id_accidente'];
+
+        $listado = DB::table('sp_accidentes')
+            ->join('sp_ruta', 'sp_ruta_id_ruta', '=', 'id_ruta')
+            ->join('sp_concesiones', 'sp_concesiones_id_conc', '=', 'id_conc')
+            ->join('sp_estados_inc', 'sp_estados_inc_id_estados', '=', 'id_estados')
+            ->join('sp_calzada', 'sp_calzada_id_calzada', '=', 'id_calzada')
+            ->join('sp_sentido', 'sp_sentido_id_sentido', '=', 'id_sentido')
+            ->join('sp_tipo_accidente', 'sp_tipo_accidente_id_tipo_acc', '=', 'id_tipo_acc')
+            ->where('id_accidente', '=', $id_acc)
+            ->first();
+
+        $automoviles = DB::table('sp_veh_inc')
+            ->join('sp_aseguradoras', 'sp_aseguradoras_id_aseguradora', '=', 'id_aseguradora')
+            ->where('sp_incidentes_id_incidentes', '=', $id_acc)
+            ->get();
+
+        $documentos = DB::table('sp_doc_inc')
+            ->join('sp_incidentes', 'sp_incidentes_id_incidentes', '=', 'id_incidentes')
+            ->where('sp_incidentes_id_incidentes', '=', $id_acc)
+            ->get();
+
+        $fotografias = DB::table('sp_ft_inc')
+            ->join('sp_incidentes', 'sp_incidentes_id_incidentes', '=', 'id_incidentes')
+            ->where('sp_incidentes_id_incidentes', '=', $id_acc)
+            ->get();
+
+        $gestiones = DB::table('sp_gestiones')
+            ->where([
+                ['ac_o_in', '=', 1],
+                ['id_in_o_ac', '=', $id_acc],
+                ['estado', '=', 1],
+            ])->get();
+
+        $aseg = DB::table('sp_aseguradoras')
+            ->get();
+
+
+        return view('Accidentes.complementos', ['inc' => $listado,'aseg'=>$aseg, 'au' => $automoviles, 'doc' => $documentos, 'ft' => $fotografias, 'ges' => $gestiones]);
+    }
 
     public function detalles()
     {
@@ -80,43 +158,45 @@ class AccidentesController extends Controller
         $id_acc = $_POST['id_accidente'];
 
         $listado = DB::table('sp_accidentes')
-            ->join('sp_ruta','sp_ruta_id_ruta','=','id_ruta')
-            ->join('sp_concesiones', 'sp_concesiones_id_conc','=', 'id_conc')
-            ->join('sp_estados_inc','sp_estados_inc_id_estados','=','id_estados')
-            ->join('sp_calzada','sp_calzada_id_calzada','=','id_calzada')
-            ->join('sp_sentido','sp_sentido_id_sentido','=','id_sentido')
-            ->join('sp_tipo_accidente','sp_tipo_accidente_id_tipo_acc','=','id_tipo_acc')
-
-            ->where('id_accidente','=', $id_acc)
+            ->join('sp_ruta', 'sp_ruta_id_ruta', '=', 'id_ruta')
+            ->join('sp_concesiones', 'sp_concesiones_id_conc', '=', 'id_conc')
+            ->join('sp_estados_inc', 'sp_estados_inc_id_estados', '=', 'id_estados')
+            ->join('sp_calzada', 'sp_calzada_id_calzada', '=', 'id_calzada')
+            ->join('sp_sentido', 'sp_sentido_id_sentido', '=', 'id_sentido')
+            ->join('sp_tipo_accidente', 'sp_tipo_accidente_id_tipo_acc', '=', 'id_tipo_acc')
+            ->where('id_accidente', '=', $id_acc)
             ->first();
 
         $automoviles = DB::table('sp_veh_inc')
-            ->join('sp_aseguradoras','sp_aseguradoras_id_aseguradora','=','id_aseguradora')
-            ->where('sp_incidentes_id_incidentes','=', $id_acc)
+            ->join('sp_aseguradoras', 'sp_aseguradoras_id_aseguradora', '=', 'id_aseguradora')
+            ->where('sp_incidentes_id_incidentes', '=', $id_acc)
             ->get();
 
         $documentos = DB::table('sp_doc_inc')
-            ->join('sp_incidentes','sp_incidentes_id_incidentes','=','id_incidentes')
-            ->where('sp_incidentes_id_incidentes','=', $id_acc)
+            ->join('sp_incidentes', 'sp_incidentes_id_incidentes', '=', 'id_incidentes')
+            ->where('sp_incidentes_id_incidentes', '=', $id_acc)
             ->get();
 
         $fotografias = DB::table('sp_ft_inc')
-            ->join('sp_incidentes','sp_incidentes_id_incidentes','=','id_incidentes')
-            ->where('sp_incidentes_id_incidentes','=', $id_acc)
+            ->join('sp_incidentes', 'sp_incidentes_id_incidentes', '=', 'id_incidentes')
+            ->where('sp_incidentes_id_incidentes', '=', $id_acc)
             ->get();
 
         $gestiones = DB::table('sp_gestiones')
             ->where([
-                ['ac_o_in','=', 1],
-                ['id_in_o_ac','=', $id_acc],
+                ['ac_o_in', '=', 1],
+                ['id_in_o_ac', '=', $id_acc],
                 ['estado', '=', 1],
             ])->get();
 
+        $aseg = DB::table('sp_aseguradoras')
+                ->get();
 
-        return view('Accidentes.detalles',['inc'=>$listado, 'au'=>$automoviles, 'doc'=>$documentos, 'ft'=>$fotografias, 'ges'=>$gestiones]);
+
+        return view('Accidentes.detalles', ['inc' => $listado,'aseg'=>$aseg, 'au' => $automoviles, 'doc' => $documentos, 'ft' => $fotografias, 'ges' => $gestiones]);
     }
 
-     public function GuardarNuevo()
+    public function GuardarNuevo()
     {
 
         $ruta = $_POST['ruta'];
@@ -138,13 +218,11 @@ class AccidentesController extends Controller
         $dannos = $_POST['dannos'];
         $desc = $_POST['desc'];
         $desc_ev = $_POST['desc_e'];
-        $resp = $_POST['respo'];
-
-
+        $resp = $_POST['id_u'];
 
         DB::table('sp_accidentes')->insert(
-            [   'fecha' => $fecha,               
-                'pk1' => $pk1, 
+            ['fecha' => $fecha,
+                'pk1' => $pk1,
                 'pk2' => $pk2,
                 'hora' => $hora,
                 'sector' => $sector,

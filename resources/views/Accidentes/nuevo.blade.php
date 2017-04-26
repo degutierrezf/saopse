@@ -51,10 +51,10 @@
 		        <div class="form-group" >
 			               	<label for="exampleInputEmail1" class="col-sm-2 control-label">PK de la Ruta:</label>
 			                    <div class="col-sm-2">
-			                    	<input type="text" class="form-control pull-right" name="pk1">
+			                    	<input type="number" min="1" max="1000" class="form-control pull-right" name="pk1">
 			                   	</div>
 			                   	<div class="col-sm-2">
-			                    	<input type="text" class="form-control pull-right" name="pk2">
+			                    	<input type="number" min="1" max="1000" class="form-control pull-right" name="pk2">
 			                   	</div>
 			                   	<label for="exampleInputEmail1" class="col-sm-2 control-label">Hora Accidente:</label>
 			                    <div class="col-sm-4">
@@ -102,7 +102,7 @@
 	           	<div class="form-group">
 	                    <label for="exampleInputEmail1" class="col-sm-2 control-label">Pistas Involucradas:</label>
 	                  	<div class="col-sm-4">
-	                  		<input type="text" class="form-control pull-right" name="pistas">
+	                  		<input type="number" min="0" max="4" class="form-control pull-right" name="pistas">
 	                  	</div>
 
 	                  	<label for="exampleInputEmail1" class="col-sm-2 control-label">Tipo Accidente:</label>
@@ -126,15 +126,15 @@
 	         	<div class="form-group">
 	                    <label for="exampleInputEmail1" class="col-sm-2 control-label">N° Fallecidos:</label>
 	                  	<div class="col-sm-2">
-	                  		<input type="text" class="form-control pull-right" name="fall">
+	                  		<input type="number" min="0" class="form-control pull-right" name="fall">
 	                  	</div>
 	                  	<label for="exampleInputEmail1" class="col-sm-2 control-label">N° Lesionados:</label>
 			            <div class="col-sm-2">
-		                  	<input type="text" class="form-control pull-right" name="les">
+		                  	<input type="number" min="0" class="form-control pull-right" name="les">
 	                  	</div>
 	                  	<label for="exampleInputEmail1" class="col-sm-2 control-label">N° Vehículos:</label>
 			            <div class="col-sm-2">
-		                  	<input type="text" class="form-control pull-right" name="veh">
+		                  	<input type="number" min="0" class="form-control pull-right" name="veh">
 	                  	</div>
 
 	            </div>
@@ -143,7 +143,7 @@
 
 	           			<label for="exampleInputEmail1" class="col-sm-2 control-label">Ilesos:</label>
 			            <div class="col-sm-2">
-		                  	<input type="text" class="form-control pull-right" name="ile">
+		                  	<input type="number" min="0" class="form-control pull-right" name="ile">
 	                  	</div>
 
 	                    <label for="exampleInputEmail1" class="col-sm-3 control-label">Daños Infraestructura:</label>
@@ -173,14 +173,10 @@
 		        <hr>
 	           	<div class="form-group">
 
-	           			<label for="exampleInputEmail1" class="col-sm-2 control-label">Responsable Información:</label>
+	           			<label for="exampleInputEmail1" class="col-sm-2 control-label">Responsable:</label>
 			            <div class="col-sm-10">
-	                  	<select class="form-control pull-right" name="respo">
-	                  		<?php  foreach ($info as $cs) { ?>
-	                  			<option class="form-control pull-right" value="<?php echo $cs->id_resp_info ?>"><?php echo $cs->nombre ?> || <?php echo $cs->telefono ?> || <?php echo $cs->correo ?></option>
-							<?php }
-							?>
-	                  	</select>
+							<input type="hidden" class="form-control pull-right" name="id_u" value="{{ Auth::user()->id }}">
+							<input type="text" class="form-control pull-right" name="nom_u" value="{{ Auth::user()->name }}" disabled>
 	                  	</div>
 	            </div>
 
