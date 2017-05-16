@@ -25,6 +25,8 @@ Route::get('Accidentes/Form', 'AccidentesController@form');
 Route::post('Accidentes/Detalles', 'AccidentesController@detalles');
 Route::post('Accidentes/Complemento', 'AccidentesController@complemento');
 Route::post('Accidentes/GuardarNuevo', 'AccidentesController@GuardarNuevo');
+Route::post('Accidentes/GuardarComplemento', 'AccidentesController@guardar_complemento');
+
 
 Route::get('Cotizacion/Nuevo', 'CotizacionController@Nuevo');
 

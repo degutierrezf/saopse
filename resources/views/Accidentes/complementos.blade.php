@@ -113,7 +113,8 @@
                     <!-- /.box-header -->
                     <!-- form start -->
 
-                    <form class="form-horizontal" name="form" action="{{ url('Accidentes/GuardarNuevo') }}" role="form"
+                    <form class="form-horizontal" name="form" action="{{ url('Accidentes/GuardarComplemento') }}"
+                          role="form"
                           method="POST">
 
                         <div class="box-body">
@@ -124,21 +125,33 @@
                                     Fatales?:</label>
 
                                 <div class="col-sm-1 checkbox">
-                                    <input type="checkbox" name="num_acc">
+                                    <?php if($mag->victimas_fatales == 1){
+                                    ?><input type="checkbox" name="vic_fat" value="1" checked>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="vic_fat" value="0">
+                                    <?php }?>
                                 </div>
 
                                 <label for="exampleInputEmail1" class="col-sm-4 control-label">¿Corte de Tránsito mayor
                                     a 30 minutos?:</label>
 
                                 <div class="col-sm-1 checkbox">
-                                    <input type="checkbox" name="num_acc">
+                                    <?php if($mag->corte_trans == 1){
+                                    ?><input type="checkbox" name="corte_trans" value="1" checked>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="corte_trans" value="0">
+                                    <?php }?>
                                 </div>
 
                                 <label for="exampleInputEmail1" class="col-sm-3 control-label">¿Afecta más de 1
                                     pista?:</label>
 
                                 <div class="col-sm-1 checkbox">
-                                    <input type="checkbox" name="num_acc">
+                                    <?php if($mag->pistas == 1){
+                                    ?><input type="checkbox" name="pistas" value="1" checked>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="pistas" value="0">
+                                    <?php }?>
                                 </div>
                             </div>
 
@@ -147,18 +160,25 @@
                                     Corte:</label>
 
                                 <div class="col-sm-2">
-                                    <input type="time" class="form-control pull-right" name="hora">
+                                    <input type="time" class="form-control pull-right" name="hora_ini"
+                                           value="{{$mag->ini_corte}}">
                                 </div>
                                 <label for="exampleInputEmail1" class="col-sm-2 control-label">Hora Fin Corte:</label>
 
                                 <div class="col-sm-2">
-                                    <input type="time" class="form-control pull-right" name="hora">
+                                    <input type="time" class="form-control pull-right" name="hora_fin"
+                                           value="{{$mag->fin_corte}}">
                                 </div>
 
                                 <label for="exampleInputEmail1" class="col-sm-3 control-label">¿By Pass?:</label>
 
                                 <div class="col-sm-1 checkbox">
-                                    <input type="checkbox" name="num_acc">
+                                    <?php if($mag->bypass == 1){
+
+                                    ?><input type="checkbox" name="by_pass" value="1" checked>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="by_pass" value="0">
+                                    <?php }?>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -166,20 +186,44 @@
                                     Ramal?:</label>
 
                                 <div class="col-sm-2">
-                                    <div class="radio">
+                                    <?php if($mag->t_or_r == 1){
+
+                                    ?><div class="radio">
+
                                         <label>
-                                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"
+                                            <input type="radio" name="t_o_r" id="optionsRadios1" value="1"
                                                    checked>
                                             Troncal
                                         </label>
                                     </div>
                                     <div class="radio">
+
                                         <label>
-                                            <input type="radio" name="optionsRadios" id="optionsRadios2"
-                                                   value="option2">
+                                            <input type="radio" name="t_o_r" id="optionsRadios2"
+                                                   value="2">
                                             Ramal
                                         </label>
+
                                     </div>
+                                    <?php }else{?>
+                                        <div class="radio">
+
+                                            <label>
+                                                <input type="radio" name="t_o_r" id="optionsRadios1" value="1">
+                                                Troncal
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+
+                                            <label>
+                                                <input type="radio" name="t_o_r" id="optionsRadios2"
+                                                       value="2" checked>
+                                                Ramal
+                                            </label>
+
+                                        </div>
+                                    <?php }?>
+
                                 </div>
                             </div>
                             <small><b>Nota: </b>Si marca una o más alternativas recuerde que esta ficha debe enviarse a
@@ -193,35 +237,121 @@
                                 <label for="exampleInputEmail1" class="col-sm-1 control-label">Colisión:</label>
 
                                 <div class="col-sm-2 checkbox">
-                                    <input type="checkbox" name="num_acc"> Frontal <br>
-                                    <input type="checkbox" name="num_acc"> Lateral <br>
-                                    <input type="checkbox" name="num_acc"> Alcance <br>
-                                    <input type="checkbox" name="num_acc"> Perpendicular <br>
-                                    <input type="checkbox" name="num_acc"> Impacto con Animal <br>
+                                    <?php if($t_a->op_1 == 1){
+                                    ?><input type="checkbox" name="op1_col" value="1" checked> Frontal <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op1_col" value="0"> Frontal <br>
+                                    <?php }?>
+
+                                    <?php if($t_a->op_2 == 1){
+                                    ?><input type="checkbox" name="op2_col" value="1" checked> Lateral <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op2_col" value="0"> Lateral <br>
+                                    <?php }?>
+
+                                    <?php if($t_a->op_3 == 1){
+                                    ?><input type="checkbox" name="op3_col" value="1" checked> Alcance <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op3_col" value="0"> Alcance <br>
+                                    <?php }?>
+
+                                    <?php if($t_a->op_4 == 1){
+                                    ?><input type="checkbox" name="op4_col" value="1" checked> Perpendicular <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op4_col" value="0"> Perpendicular <br>
+                                    <?php }?>
+
+                                    <?php if($t_a->op_5 == 1){
+                                    ?><input type="checkbox" name="op5_col" value="1" checked> Impacto con Animal <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op5_col" value="0"> Impacto con Animal <br>
+                                    <?php }?>
                                 </div>
 
                                 <label for="exampleInputEmail1" class="col-sm-2 control-label">Choque con
                                     Objeto:</label>
 
                                 <div class="col-sm-2 checkbox">
-                                    <input type="checkbox" name="num_acc"> Frontal <br>
-                                    <input type="checkbox" name="num_acc"> Lateral <br>
-                                    <input type="checkbox" name="num_acc"> Posterior <br>
+
+                                    <?php if($t_a->op_6 == 1){
+                                    ?><input type="checkbox" name="op6_col" value="1" checked> Frontal <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op6_col" value="0"> Frontal <br>
+                                    <?php }?>
+
+                                    <?php if($t_a->op_7 == 1){
+                                    ?><input type="checkbox" name="op7_col" value="1" checked> Lateral <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op7_col" value="0"> Lateral <br>
+                                    <?php }?>
+
+                                    <?php if($t_a->op_8 == 1){
+                                    ?><input type="checkbox" name="op8_col" value="1" checked> Posterior <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op8_col" value="0"> Posterior <br>
+                                    <?php }?>
+
                                 </div>
 
                                 <label for="exampleInputEmail1" class="col-sm-2 control-label">Choque con Vehículo
                                     Detenido:</label>
 
                                 <div class="col-sm-2 checkbox">
-                                    <input type="checkbox" name="num_acc"> Frente/Frente
-                                    <input type="checkbox" name="num_acc"> Lado/Posterior <br>
-                                    <input type="checkbox" name="num_acc"> Frente/Lado <br>
-                                    <input type="checkbox" name="num_acc"> Posterior/Frente <br>
-                                    <input type="checkbox" name="num_acc"> Frente/Posterior <br>
-                                    <input type="checkbox" name="num_acc"> Posterior/Lado <br>
-                                    <input type="checkbox" name="num_acc"> Lado/Frente <br>
-                                    <input type="checkbox" name="num_acc"> Posterior/Posterior <br>
-                                    <input type="checkbox" name="num_acc"> Lado/Lado <br>
+
+                                    <?php if($t_a->op_9 == 1){
+                                    ?><input type="checkbox" name="op9_col" value="1" checked> Frente/Frente <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op9_col" value="0"> Frente/Frente <br>
+                                    <?php }?>
+
+                                    <?php if($t_a->op_10 == 1){
+                                    ?><input type="checkbox" name="op10_col" value="1" checked> Lado/Posterior <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op10_col" value="0"> Lado/Posterior <br>
+                                    <?php }?>
+
+                                    <?php if($t_a->op_11 == 1){
+                                    ?><input type="checkbox" name="op11_col" value="1" checked> Frente/Lado <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op11_col" value="0"> Frente/Lado <br>
+                                    <?php }?>
+
+                                    <?php if($t_a->op_12 == 1){
+                                    ?><input type="checkbox" name="op12_col" value="1" checked> Posterior/Frente <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op12_col" value="0"> Posterior/Frente <br>
+                                    <?php }?>
+
+                                    <?php if($t_a->op_13 == 1){
+                                    ?><input type="checkbox" name="op13_col" value="1" checked> Frente/Posterior <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op13_col" value="0"> Frente/Posterior <br>
+                                    <?php }?>
+
+                                    <?php if($t_a->op_14 == 1){
+                                    ?><input type="checkbox" name="op14_col" value="1" checked> Posterior/Lado <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op14_col" value="0"> Posterior/Lado <br>
+                                    <?php }?>
+
+                                    <?php if($t_a->op_15 == 1){
+                                    ?><input type="checkbox" name="op15_col" value="1" checked> Lado/Frente <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op15_col" value="0"> Lado/Frente <br>
+                                    <?php }?>
+
+                                    <?php if($t_a->op_16 == 1){
+                                    ?><input type="checkbox" name="op16_col" value="1" checked> Posterior/Posterior <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op16_col" value="0"> Posterior/Posterior <br>
+                                    <?php }?>
+
+                                    <?php if($t_a->op_17 == 1){
+                                    ?><input type="checkbox" name="op17_col" value="1" checked> Lado/Lado <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op17_col" value="0"> Lado/Lado <br>
+                                    <?php }?>
+
                                 </div>
                             </div>
 
@@ -234,33 +364,119 @@
                                 <label for="exampleInputEmail1" class="col-sm-1 control-label"></label>
 
                                 <div class="col-sm-3 checkbox">
-                                    <input type="checkbox" name="num_acc"> Cruce con Semaforo Funcionando <br>
-                                    <input type="checkbox" name="num_acc"> Cruce con Semaforo Apagado <br>
-                                    <input type="checkbox" name="num_acc"> Cruce regulado por Carabineros <br>
-                                    <input type="checkbox" name="num_acc"> Cruce con señal "Pare" <br>
-                                    <input type="checkbox" name="num_acc"> Cruce con señal "Ceda el Paso" <br>
-                                    <input type="checkbox" name="num_acc"> Cruce sin Señalización <br>
+
+                                    <?php if($u_rel->op_1 == 1){
+                                    ?><input type="checkbox" name="op1_u" value="1" checked> Cruce con Semaforo Funcionando <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op1_u" value="0"> Cruce con Semaforo Funcionando <br>
+                                    <?php }?>
+
+                                    <?php if($u_rel->op_2 == 1){
+                                    ?><input type="checkbox" name="op2_u" value="1" checked> Cruce con Semaforo Apagado <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op2_u" value="0"> Cruce con Semaforo Apagado <br>
+                                    <?php }?>
+
+                                    <?php if($u_rel->op_3 == 1){
+                                    ?><input type="checkbox" name="op3_u" value="1" checked> Cruce regulado por Carabineros <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op3_u" value="0"> Cruce regulado por Carabineros <br>
+                                    <?php }?>
+
+                                    <?php if($u_rel->op_4 == 1){
+                                    ?><input type="checkbox" name="op4_u" value="1" checked> Cruce con señal "Pare" <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op4_u" value="0"> Cruce con señal "Pare" <br>
+                                    <?php }?>
+
+                                    <?php if($u_rel->op_5 == 1){
+                                    ?><input type="checkbox" name="op5_u" value="1" checked> Cruce con señal "Ceda el Paso" <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op5_u" value="0"> Cruce con señal "Ceda el Paso" <br>
+                                    <?php }?>
+
+                                    <?php if($u_rel->op_6 == 1){
+                                    ?><input type="checkbox" name="op6_u" value="1" checked> Cruce sin Señalización <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op6_u" value="0"> Cruce sin Señalización <br>
+                                    <?php }?>
                                 </div>
 
                                 <label for="exampleInputEmail1" class="col-sm-1 control-label"></label>
 
                                 <div class="col-sm-3 checkbox">
-                                    <input type="checkbox" name="num_acc"> Tramo de Vía Recta <br>
-                                    <input type="checkbox" name="num_acc"> Puente <br>
-                                    <input type="checkbox" name="num_acc"> Tramo de Vía Curva Vertical <br>
-                                    <input type="checkbox" name="num_acc"> Acera o Berma <br>
-                                    <input type="checkbox" name="num_acc"> Tramo de Vía Curva Horizontal <br>
+
+                                    <?php if($u_rel->op_7 == 1){
+                                    ?><input type="checkbox" name="op7_u" value="1" checked> Tramo de Vía Recta <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op7_u" value="0"> Tramo de Vía Recta <br>
+                                    <?php }?>
+
+                                    <?php if($u_rel->op_8 == 1){
+                                    ?><input type="checkbox" name="op8_u" value="1" checked> Puente <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op8_u" value="0"> Puente <br>
+                                    <?php }?>
+
+                                    <?php if($u_rel->op_9 == 1){
+                                    ?><input type="checkbox" name="op9_u" value="1" checked> Tramo de Vía Curva Vertical <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op9_u" value="0"> Tramo de Vía Curva Vertical <br>
+                                    <?php }?>
+
+                                    <?php if($u_rel->op_10 == 1){
+                                    ?><input type="checkbox" name="op10_u" value="1" checked> Acera o Berma <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op10_u" value="0"> Acera o Berma <br>
+                                    <?php }?>
+
+                                    <?php if($u_rel->op_11 == 1){
+                                    ?><input type="checkbox" name="op11_u" value="1" checked> Tramo de Vía Curva Horizontal <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op11_u" value="0"> Tramo de Vía Curva Horizontal <br>
+                                    <?php }?>
                                 </div>
 
                                 <label for="exampleInputEmail1" class="col-sm-1 control-label"></label>
 
                                 <div class="col-sm-3 checkbox">
-                                    <input type="checkbox" name="num_acc"> Enlace a Nivel <br>
-                                    <input type="checkbox" name="num_acc"> Enlace a Desnivel <br>
-                                    <input type="checkbox" name="num_acc"> Acceso no Habilitado <br>
-                                    <input type="checkbox" name="num_acc"> Rotonda <br>
-                                    <input type="checkbox" name="num_acc"> Plaza de Peaje <br>
-                                    <input type="checkbox" name="num_acc"> Otros no Considerados <br>
+
+                                    <?php if($u_rel->op_12 == 1){
+                                    ?><input type="checkbox" name="op12_u" value="1" checked> Enlace a Nivel <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op12_u" value="0"> Enlace a Nivel <br>
+                                    <?php }?>
+
+                                    <?php if($u_rel->op_13 == 1){
+                                    ?><input type="checkbox" name="op13_u" value="1" checked> Enlace a Desnivel <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op13_u" value="0"> Enlace a Desnivel <br>
+                                    <?php }?>
+
+                                    <?php if($u_rel->op_14 == 1){
+                                    ?><input type="checkbox" name="op14_u" value="1" checked> Acceso no Habilitado <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op14_u" value="0"> Acceso no Habilitado <br>
+                                    <?php }?>
+
+                                    <?php if($u_rel->op_15 == 1){
+                                    ?><input type="checkbox" name="op15_u" value="1" checked> Rotonda <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op15_u" value="0"> Rotonda <br>
+                                    <?php }?>
+
+                                    <?php if($u_rel->op_16 == 1){
+                                    ?><input type="checkbox" name="op16_u" value="1" checked> Plaza de Peaje <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op16_u" value="0"> Plaza de Peaje <br>
+                                    <?php }?>
+
+                                    <?php if($u_rel->op_17 == 1){
+                                    ?><input type="checkbox" name="op17_u" value="1" checked> Otros no Considerados <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op17_u" value="0"> Otros no Considerados <br>
+                                    <?php }?>
+
                                 </div>
                             </div>
 
@@ -274,17 +490,54 @@
                                 <label for="exampleInputEmail1" class="col-sm-2 control-label">Concurrencia:</label>
 
                                 <div class="col-sm-1 checkbox">
-                                    <input type="checkbox" name="num_acc"> Carabineros <br>
-                                    <input type="checkbox" name="num_acc"> Ambulancia <br>
-                                    <input type="checkbox" name="num_acc"> Bomberos <br>
-                                    <input type="checkbox" name="num_acc"> Operadora <br>
-                                    <input type="checkbox" name="num_acc"> I.T.E. <br>
+
+                                    <?php if($c_e->op_1 == 1){
+                                    ?><input type="checkbox" name="op1_cc" value="1" checked> Carabineros <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op1_cc" value="0"> Carabineros <br>
+                                    <?php }?>
+
+                                    <?php if($c_e->op_2 == 1){
+                                    ?><input type="checkbox" name="op2_cc" value="1" checked> Ambulancia <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op2_cc" value="0"> Ambulancia <br>
+                                    <?php }?>
+
+                                    <?php if($c_e->op_3 == 1){
+                                    ?><input type="checkbox" name="op3_cc" value="1" checked> Bomberos <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op3_cc" value="0"> Bomberos <br>
+                                    <?php }?>
+
+                                    <?php if($c_e->op_4 == 1){
+                                    ?><input type="checkbox" name="op4_cc" value="1" checked> Operadora <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op4_cc" value="0"> Operadora <br>
+                                    <?php }?>
+
+                                    <?php if($c_e->op_5 == 1){
+                                    ?><input type="checkbox" name="op5_cc" value="1" checked> I.T.E. <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op5_cc" value="0"> I.T.E. <br>
+                                    <?php }?>
                                 </div>
 
                                 <label for="exampleInputEmail1" class="col-sm-2 control-label">Punto Duro:</label>
 
                                 <div class="col-sm-2">
                                     <select class="form-control pull-right" name="p_duro">
+
+                                        <?php if($c_e->p_duro == 1){?>
+                                        <option value="1">C/Defensa</option>
+                                        <?php }else if($c_e->p_duro == 2){?>
+                                        <option value="2">S/Defensa</option>
+                                        <?php }else if($c_e->p_duro == 3){?>
+                                        <option value="3">No Existe</option>
+                                        <?php }else{?>
+                                        <option value="0">--------</option>
+                                        <?php }?>
+
+                                        <option value="0">--------</option>
                                         <option value="1">C/Defensa</option>
                                         <option value="2">S/Defensa</option>
                                         <option value="3">No Existe</option>
@@ -295,6 +548,21 @@
 
                                 <div class="col-sm-2">
                                     <select class="form-control pull-right" name="defensas">
+
+
+                                        <?php if($c_e->defensas == 1){?>
+                                        <option value="1">Mediana</option>
+                                        <?php }else if($c_e->defensas == 2){?>
+                                        <option value="2">Lateral Izquierda</option>
+                                        <?php }else if($c_e->defensas == 3){?>
+                                        <option value="3">Lateral Derecha</option>
+                                        <?php }else if($c_e->defensas == 4){?>
+                                        <option value="4">No Existe</option>
+                                        <?php }else{?>
+                                        <option value="0">--------</option>
+                                        <?php }?>
+
+                                        <option value="0">--------</option>
                                         <option value="1">Mediana</option>
                                         <option value="2">Lateral Izquierda</option>
                                         <option value="3">Lateral Derecha</option>
@@ -305,7 +573,19 @@
                                 <label for="exampleInputEmail1" class="col-sm-2 control-label">Desnivel:</label>
 
                                 <div class="col-sm-2">
-                                    <select class="form-control pull-right" name="desnivel">
+                                    <select class="form-control pull-right" name="nivel">
+
+                                        <?php if($c_e->desnivel == 1){?>
+                                        <option value="1">Existe C/Prot</option>
+                                        <?php }else if($c_e->desnivel == 2){?>
+                                        <option value="2">Existe S/Prot</option>
+                                        <?php }else if($c_e->desnivel == 3){?>
+                                        <option value="3">No Existe</option>
+                                        <?php }else{?>
+                                        <option value="0">--------</option>
+                                        <?php }?>
+
+                                        <option value="0">--------</option>
                                         <option value="1">Existe C/Prot</option>
                                         <option value="2">Existe S/Prot</option>
                                         <option value="3">No Existe</option>
@@ -316,6 +596,20 @@
 
                                 <div class="col-sm-2">
                                     <select class="form-control pull-right" name="cerco">
+
+                                        <?php if($c_e->cerco == 1){?>
+                                        <option value="1">Bueno</option>
+                                        <?php }else if($c_e->cerco == 2){?>
+                                        <option value="2">Regular</option>
+                                        <?php }else if($c_e->cerco == 3){?>
+                                        <option value="3">Malo</option>
+                                        <?php }else if($c_e->cerco == 4){?>
+                                        <option value="4">No Existe</option>
+                                        <?php }else{?>
+                                        <option value="0">--------</option>
+                                        <?php }?>
+
+                                        <option value="0">--------</option>
                                         <option value="1">Bueno</option>
                                         <option value="2">Regular</option>
                                         <option value="3">Malo</option>
@@ -327,18 +621,38 @@
                                 <label for="exampleInputEmail1" class="col-sm-2 control-label">Trabajos:</label>
 
                                 <div class="col-sm-2">
-                                    <select class="form-control pull-right" name="desnivel">
-                                        <option value="1">Si</option>
-                                        <option value="2">No</option>
+                                    <select class="form-control pull-right" name="trabajos">
+
+                                        <?php if($c_e->trabajos == 1){?>
+                                        <option value="1">SI</option>
+                                        <?php }else if($c_e->trabajos == 2){?>
+                                        <option value="2">NO</option>
+                                        <?php }else{?>
+                                        <option value="0">--------</option>
+                                        <?php }?>
+
+                                        <option value="0">--------</option>
+                                        <option value="1">SI</option>
+                                        <option value="2">NO</option>
                                     </select>
                                 </div>
 
                                 <label for="exampleInputEmail1" class="col-sm-2 control-label">Banderero:</label>
 
                                 <div class="col-sm-2">
-                                    <select class="form-control pull-right" name="desnivel">
-                                        <option value="1">Si</option>
-                                        <option value="2">No</option>
+                                    <select class="form-control pull-right" name="bande">
+
+                                        <?php if($c_e->banderero == 1){?>
+                                        <option value="1">SI</option>
+                                        <?php }else if($c_e->banderero == 2){?>
+                                        <option value="2">NO</option>
+                                        <?php }else{?>
+                                        <option value="0">--------</option>
+                                        <?php }?>
+
+                                        <option value="0">--------</option>
+                                        <option value="1">SI</option>
+                                        <option value="2">NO</option>
                                     </select>
                                 </div>
 
@@ -354,21 +668,82 @@
                                 <label for="exampleInputEmail1" class="col-sm-1 control-label">Tipo:</label>
 
                                 <div class="col-sm-2 checkbox">
-                                    <input type="checkbox" name="num_acc"> Seca <br>
-                                    <input type="checkbox" name="num_acc"> Humeda <br>
-                                    <input type="checkbox" name="num_acc"> Mojada <br>
-                                    <input type="checkbox" name="num_acc"> Con Barro <br>
-                                    <input type="checkbox" name="num_acc"> Nieve <br>
-                                    <input type="checkbox" name="num_acc"> Aceite <br>
-                                    <input type="checkbox" name="num_acc"> Escarcha <br>
-                                    <input type="checkbox" name="num_acc"> Gravilla <br>
-                                    <input type="checkbox" name="num_acc"> Otros <br>
+
+                                    <?php if($c_c->op_1 == 1){
+                                    ?><input type="checkbox" name="op1_con" value="1"  checked> Seca <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op1_con" value="0" > Seca <br>
+                                    <?php }?>
+
+                                    <?php if($c_c->op_2 == 1){
+                                    ?><input type="checkbox" name="op2_con" value="1" checked> Humeda <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op2_con" value="0" > Humeda <br>
+                                    <?php }?>
+
+                                    <?php if($c_c->op_3 == 1){
+                                    ?><input type="checkbox" name="op3_con" value="1" checked> Mojada <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op3_con" value="0" > Mojada <br>
+                                    <?php }?>
+
+                                    <?php if($c_c->op_4 == 1){
+                                    ?><input type="checkbox" name="op4_con" value="1"  checked> Con Barro <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op4_con" value="0" > Con Barro <br>
+                                    <?php }?>
+
+                                    <?php if($c_c->op_5 == 1){
+                                    ?><input type="checkbox" name="op5_con" value="1" checked> Nieve <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op5_con" value="0" > Nieve <br>
+                                    <?php }?>
+
+                                    <?php if($c_c->op_6 == 1){
+                                    ?><input type="checkbox" name="op6_con" value="1"  checked> Aceite <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op6_con" value="0" > Aceite <br>
+                                    <?php }?>
+
+                                    <?php if($c_c->op_7 == 1){
+                                    ?><input type="checkbox" name="op7_con" value="1"  checked> Escarcha <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op7_con" value="0" > Escarcha <br>
+                                    <?php }?>
+
+                                    <?php if($c_c->op_8 == 1){
+                                    ?><input type="checkbox" name="op8_con" value="1"  checked> Gravilla <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op8_con" value="0" > Gravilla <br>
+                                    <?php }?>
+
+                                    <?php if($c_c->op_9 == 1){
+                                    ?><input type="checkbox" name="op9_con" value="1"  checked> Otros <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op9_con" value="0" > Otros <br>
+                                    <?php }?>
+
                                 </div>
 
                                 <label for="exampleInputEmail1" class="col-sm-2 control-label">Luminosidad:</label>
 
                                 <div class="col-sm-2">
-                                    <select class="form-control pull-right" name="lum">
+                                    <select class="form-control pull-right" name="lumi">
+
+
+                                        <?php if($c_c->lumi == 1){?>
+                                        <option value="1">Diurna</option>
+                                        <?php }else if($c_c->lumi == 2){?>
+                                        <option value="2">Nocturna</option>
+                                        <?php }else if($c_c->lumi == 3){?>
+                                        <option value="3">Amanecer</option>
+                                        <?php }else if($c_c->lumi == 4){?>
+                                        <option value="4">Atardecer</option>
+                                        <?php }else{?>
+                                        <option value="0">--------</option>
+                                        <?php }?>
+
+                                        <option value="0">--------</option>
                                         <option value="1">Diurna</option>
                                         <option value="2">Nocturna</option>
                                         <option value="3">Amanecer</option>
@@ -379,7 +754,26 @@
                                 <label for="exampleInputEmail1" class="col-sm-2 control-label">Atmósfera:</label>
 
                                 <div class="col-sm-2">
-                                    <select class="form-control pull-right" name="atmosfera">
+                                    <select class="form-control pull-right" name="atmo">
+
+
+                                        <?php if($c_c->atmo == 1){?>
+                                        <option value="1">Despejado</option>
+                                        <?php }else if($c_c->atmo == 2){?>
+                                        <option value="2">Nublado</option>
+                                        <?php }else if($c_c->atmo == 3){?>
+                                        <option value="3">Lluvia</option>
+                                        <?php }else if($c_c->atmo == 4){?>
+                                        <option value="4">Llovizna</option>
+                                        <?php }else if($c_c->atmo == 5){?>
+                                        <option value="5">Neblina</option>
+                                        <?php }else if($c_c->atmo == 6){?>
+                                        <option value="6">Nieve</option>
+                                        <?php }else{?>
+                                        <option value="0">--------</option>
+                                        <?php }?>
+
+                                        <option value="0">--------</option>
                                         <option value="1">Despejado</option>
                                         <option value="2">Nublado</option>
                                         <option value="3">Lluvia</option>
@@ -392,7 +786,23 @@
                                 <label for="exampleInputEmail1" class="col-sm-2 control-label">Luz:</label>
 
                                 <div class="col-sm-4">
-                                    <select class="form-control pull-right" name="desnivel">
+                                    <select class="form-control pull-right" name="luz">
+
+
+                                        <?php if($c_c->luz == 1){
+                                        ?>
+                                        <option value="1">Apagada</option>
+                                        <?php }else if($c_c->luz == 2){?>
+                                        <option value="2">Encendida Suficientemente</option>
+                                        <?php }else if($c_c->luz == 3){?>
+                                        <option value="3">Encendida Insuficientemente</option>
+                                        <?php }else if($c_c->luz == 4){?>
+                                        <option value="4">No Existe en el Sector</option>
+                                        <?php }else{?>
+                                        <option value="0">--------</option>
+                                        <?php }?>
+
+                                        <option value="0">--------</option>
                                         <option value="1">Apagada</option>
                                         <option value="2">Encendida Suficientemente</option>
                                         <option value="3">Encendida Insuficientemente</option>
@@ -409,20 +819,74 @@
                                 <label for="exampleInputEmail2" class="col-sm-2 control-label">Origen Accidente:</label>
 
                                 <div class="col-sm-3 checkbox">
-                                    <input type="checkbox" name="num_acc"> Falla Humana <br>
-                                    <input type="checkbox" name="num_acc"> Falla Mecánica <br>
-                                    <input type="checkbox" name="num_acc"> Animal u Otro Obstaculo en la Vía <br>
-                                    <input type="checkbox" name="num_acc"> Pavimento resvaladizo <br>
-                                    <input type="checkbox" name="num_acc"> Carga mal estibada <br>
-                                    <input type="checkbox" name="num_acc"> Condición Climática <br>
-                                    <input type="checkbox" name="num_acc"> No definida <br>
+
+                                    <?php if($o_pro->op_1 == 1){
+                                    ?><input type="checkbox" name="op1_op" value="1" checked> Falla Humana <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op1_op" value="0"> Falla Humana <br>
+                                    <?php }?>
+
+                                    <?php if($o_pro->op_2 == 1){
+                                    ?><input type="checkbox" name="op2_op" value="1" checked> Falla Mecánica <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op2_op" value="0"> Falla Mecánica <br>
+                                    <?php }?>
+
+                                    <?php if($o_pro->op_3 == 1){
+                                    ?><input type="checkbox" name="op3_op" value="1" checked> Animal u Otro Obstaculo en la Vía
+                                    <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op3_op" value="0"> Animal u Otro Obstaculo en la Vía <br>
+                                    <?php }?>
+
+                                    <?php if($o_pro->op_4 == 1){
+                                    ?><input type="checkbox" name="op4_op" value="1" checked> Pavimento resvaladizo <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op4_op" value="0"> Pavimento resvaladizo <br>
+                                    <?php }?>
+
+                                    <?php if($o_pro->op_5 == 1){
+                                    ?><input type="checkbox" name="op5_op" value="1" checked> Carga mal estibada <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op5_op" value="0"> Carga mal estibada <br>
+                                    <?php }?>
+
+                                    <?php if($o_pro->op_6 == 1){
+                                    ?><input type="checkbox" name="op6_op" value="1" checked> Condición Climática <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op6_op" value="0"> Condición Climática <br>
+                                    <?php }?>
+
+                                    <?php if($o_pro->op_7 == 1){
+                                    ?><input type="checkbox" name="op7_op" value="1" checked> No definida <br>
+                                    <?php }else{?>
+                                    <input type="checkbox" name="op7_op" value="0"> No definida <br>
+                                    <?php }?>
+
                                 </div>
 
 
-                                <label for="exampleInputEmail1" class="col-sm-3 control-label">Velocidad Máxima del sector:</label>
+                                <label for="exampleInputEmail1" class="col-sm-3 control-label">Velocidad Máxima del
+                                    sector:</label>
 
                                 <div class="col-sm-2">
-                                    <select class="form-control pull-right" name="desnivel">
+                                    <select class="form-control pull-right" name="velocidad">
+
+
+                                        <?php if($o_pro->vel_max == 1){
+                                        ?>
+                                        <option value="1">0-50 KM/H</option>
+                                        <?php }else if($o_pro->vel_max == 2){?>
+                                        <option value="2">50-80 KM/H</option>
+                                        <?php }else if($o_pro->vel_max == 3){?>
+                                        <option value="3">80-100 KM/H</option>
+                                        <?php }else if($o_pro->vel_max == 4){?>
+                                        <option value="4">100-120 KM/H</option>
+                                        <?php }else{?>
+                                        <option value="0">--------</option>
+                                        <?php }?>
+
+                                        <option value="0">--------</option>
                                         <option value="1">0-50 KM/H</option>
                                         <option value="2">50-80 KM/H</option>
                                         <option value="3">80-100 KM/H</option>
@@ -433,6 +897,7 @@
 
                             <hr>
 
+                            <input type="hidden" name="folio_acc" value="{{ $o_pro->sp_accidentes_id_accidente }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                             <div class="box-footer">
