@@ -18,8 +18,10 @@ class CotizacionController extends Controller
    	public function index()
     {
 
+        $id = $_POST['id_accidente'];
+
         $cot = DB::table('sp_cotizacion')
-        ->where('id_cotizacion','=',1)
+        ->where('sp_accidentes_id_accidente','=',$id)
         ->get();
 
         return view('Cotizaciones.index', ['cot'=>$cot]);
@@ -27,14 +29,14 @@ class CotizacionController extends Controller
 
     public function Nuevo()
 	{
-    	//$id = $_POST['id_accidente'];
+    	$id = $_POST['id_accidente'];
 
         $con = DB::table('sp_concesiones')
             ->where('id_conc','=',1)
             ->first();
 
         $cot = DB::table('sp_cotizacion')
-        ->where('id_cotizacion','=',1)
+        ->where('sp_accidentes_id_accidente','=',$id)
         ->first();
 
         $act = DB::table('sp_actividad')

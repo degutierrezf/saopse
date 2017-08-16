@@ -69,7 +69,14 @@
                     <tr>
                         <td><b>DAÑOS</b></td>
                         <td>:</td>
-                        <td><?php echo $inc->dannos?></td>
+                        <td>
+                            <?php
+                                if($inc->dannos == 1)
+                                echo 'SI';
+                                else
+                                echo 'NO';
+                            ?>
+                        </td>
                     </tr>
                     <tr>
                         <td><b>ESTADO</b></td>
@@ -86,15 +93,16 @@
                     <button type="button" class="btn btn-xs"><i class="fa fa-file-pdf-o"></i> Generar Cotización
                     </button>
                     <br><br>
-                    <button type="button" class="btn btn-success btn-xs"><i class="fa fa-file-pdf-o"></i> Imprimir
-                        Informe
-                    </button>
 
-                    <button type="button" class="btn btn-primary btn-xs"><i class="fa fa-file-pdf-o"></i> Imprimir en
-                        PDF
-                    </button>
+                    <form action="{{ url('Accidentes/FormularioRetiro') }}" role="form" method="POST">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <input type="hidden" name="id_accidente" value="<?php echo $inc->id_accidente?>">
+                        <button type="submit" class="btn btn-success btn-xs"><i class="fa fa-file-pdf-o"></i> Informe Hoja 2
+                        </button>
+                    </form>
 
                 </center>
+
             </div>
             <!-- /.col -->
         </div>
@@ -153,9 +161,14 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <?php $num_veh = 1; ?>
                     <?php  foreach ($au as $cs) { ?>
                     <tr>
-                        <td></td>
+                        <td><?php
+                            echo $num_veh;
+                            $num_veh= $num_veh + 1;
+                            ?>
+                        </td>
                         <td><?php echo $cs->marca?> <?php echo $cs->modelo?></td>
                         <td><?php echo $cs->placa?></td>
                         <td><?php echo $cs->propietario?></td>
@@ -182,25 +195,43 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
+                        <th>Rut</th>
                         <th>Nombre</th>
                         <th>Edad</th>
                         <th>Domicilio</th>
                         <th>Teléfono</th>
-                        <th>Rut</th>
                         <th>Consecuencia</th>
                         <th>Daños Ocasionados</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <?php  foreach ($au as $cs) { ?>
+                    <?php  foreach ($per as $per) { ?>
                     <tr>
-                        <td></td>
-                        <td><?php echo $cs->marca?> <?php echo $cs->modelo?></td>
-                        <td><?php echo $cs->placa?></td>
-                        <td><?php echo $cs->propietario?></td>
-                        <td><?php echo $cs->rut_prop?></td>
-                        <td><?php echo $cs->fono?></td>
-                        <td><?php echo $cs->num_poliza?></td>
+                        <td><?php echo $per->rut?></td>
+                        <td><?php echo $per->nombre?></td>
+                        <td><?php echo $per->edad?></td>
+                        <td><?php echo $per->direccion?></td>
+                        <td><?php echo $per->telefono?> - <?php echo $per->celular?></td>
+                        <td>
+                            <?php
+                                if($per->consecuencia==1){
+                                    echo 'Muerte';
+                                }
+                                elseif ($per->consecuencia==2){
+                                    echo 'Grave';
+                                }
+                                elseif ($per->consecuencia==3){
+                                    echo 'Menos Grave';
+                                }
+                                elseif ($per->consecuencia==4){
+                                    echo 'Lesiones Leves';
+                                }
+                                elseif ($per->consecuencia==5){
+                                    echo 'Ileso';
+                                }
+                            ?>
+                        </td>
+                        <td><?php echo $per->dannos?></td>
                     </tr>
                     <?php }  ?>
                     </tbody>
@@ -213,16 +244,16 @@
         <div class="row">
             <!-- accepted payments column -->
 
-            <div class="col-xs-6">
-                <p class="lead"><i class="fa fa-edit"></i> <b>DETALLE:</b></p>
+            <div class="col-xs-4">
+                <p class="lead"><i class="fa fa-edit"></i> <b>DESCRIPCIÓN BREVE:</b></p>
 
                 <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-                    <?php echo $inc->descripcion?>
+                    <?php echo $inc->desc_breve?>
                 </p>
             </div>
 
-            <div class="col-xs-6">
-                <p class="lead"><i class="fa fa-pencil"></i> <b>NOTAS:</b></p>
+            <div class="col-xs-8">
+                <p class="lead"><i class="fa fa-pencil"></i> <b>DESCRIPCIÓN:</b></p>
 
                 <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
                     <?php echo $inc->descripcion?>
@@ -243,16 +274,19 @@
                     <tr>
                         <th>N°</th>
                         <th>Nombre Documento</th>
-                        <th>Tipo Documento</th>
                         <th>Ver Documento</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <?php  foreach ($doc as $dc) { ?>
+                    <?php $num_doc = 1; ?>
+                    <?php  foreach ($doc as $dc) {?>
                     <tr>
-                        <td></td>
+                        <td><?php
+                            echo $num_doc;
+                            $num_doc= $num_doc + 1;
+                            ?>
+                        </td>
                         <td><?php echo $dc->nombre?></td>
-                        <td><?php echo $dc->tipo_doc?></td>
                         <td><a href="/<?php echo $dc->ruta?>">Bajar Documento</a></td>
                     </tr>
                     <?php }  ?>
@@ -272,7 +306,11 @@
                 </p>
                 <table class="table table-striped">
                     <thead>
-
+                    <?php  foreach ($cr as $cr) { ?>
+                    <th>
+                        <center><a href="/<?php echo $cr->ruta ?>"><img src="/<?php echo $cr->ruta ?>" width="100%"></a></center>
+                    </th>
+                    <?php }  ?>
                     </thead>
                     </tbody>
                 </table>
@@ -320,9 +358,14 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <?php $num_ges = 1; ?>
                     <?php  foreach ($ges as $gs) { ?>
                     <tr>
-                        <td></td>
+                        <td><?php
+                            echo $num_ges;
+                            $num_ges= $num_ges + 1;
+                            ?>
+                        </td>
                         <td><?php echo date('d M Y', strtotime($gs->fec_crea))?></td>
                         <td><?php echo $gs->asunto?></td>
                         <td><?php echo $gs->texto?></td>
@@ -336,11 +379,12 @@
         <!-- this row will not appear when printing -->
         <div class="row no-print">
             <div class="col-xs-12">
-                <a href="/Accidentes/Form" target="_blank" class="btn btn-default"><i class="fa fa-print"></i>
-                    Imprimir Ficha</a>
-                <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
-                    <i class="fa fa-download"></i> Generar Informe en PDF
-                </button>
+                <form action="{{ url('Accidentes/FormularioRetiro') }}" role="form" method="POST">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="id_accidente" value="<?php echo $inc->id_accidente?>">
+                    <button type="submit" class="btn btn-success btn-xs"><i class="fa fa-file-pdf-o"></i> Informe Hoja 2
+                    </button>
+                </form>
             </div>
         </div>
     </section>
@@ -373,18 +417,18 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1" class="col-sm-2 control-label">Rut:</label>
                                 <div class="col-sm-4">
-                                    <input class="form-control pull-right" type="text" name="placa" required>
+                                    <input class="form-control pull-right" type="text" name="rut" required>
                                 </div>
                                 <label for="exampleInputEmail1" class="col-sm-2 control-label">Edad:</label>
                                 <div class="col-sm-4">
-                                    <input class="form-control pull-right" type="text" name="rut" required>
+                                    <input class="form-control pull-right" type="text" name="edad" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="exampleInputEmail1" class="col-sm-2 control-label">Nombre:</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control pull-right" type="text" name="propietario" required>
+                                    <input class="form-control pull-right" type="text" name="nombre" required>
                                 </div>
                             </div>
 
@@ -420,7 +464,7 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1" class="col-sm-2 control-label">Daños Ocasionados:</label>
                                 <div class="col-sm-10">
-                                    <textarea class="form-control pull-right" name="mensaje" id="" cols="10" rows="5"
+                                    <textarea class="form-control pull-right" name="danos" id="" cols="10" rows="5"
                                               required></textarea>
                                 </div>
                             </div>
@@ -428,7 +472,7 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1" class="col-sm-2 control-label">Consecuencia:</label>
                                 <div class="col-sm-10">
-                                    <select class="form-control pull-right" name="aseguradora">
+                                    <select class="form-control pull-right" name="consecuencia">
                                         <option class="form-control pull-right" value="1">Muerte</option>
                                         <option class="form-control pull-right" value="2">Grave</option>
                                         <option class="form-control pull-right" value="3">Menos Grave</option>
@@ -499,6 +543,13 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="exampleInputEmail1" class="col-sm-2 control-label">Nombre Conductor:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control pull-right" type="text" name="conductor" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label for="exampleInputEmail1" class="col-sm-2 control-label">Nombre Dueño:</label>
                                 <div class="col-sm-10">
                                     <input class="form-control pull-right" type="text" name="propietario" required>
@@ -535,9 +586,12 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="exampleInputEmail1" class="col-sm-2 control-label">¿Daños?:</label>
+                                <label for="exampleInputEmail1" class="col-sm-2 control-label">¿Informe?:</label>
                                 <div class="col-sm-4">
-                                    <input class="form-control pull-right" type="text" name="d_dannos" required>
+                                    <select class="form-control pull-right" name="d_dannos">
+                                        <option class="form-control pull-right" value="0">NO</option>
+                                        <option class="form-control pull-right" value="1">SI</option>
+                                    </select>
                                 </div>
                                 <label for="exampleInputEmail1" class="col-sm-2 control-label">Nº Póliza:</label>
                                 <div class="col-sm-4">
@@ -558,7 +612,7 @@
                                 <div class="col-sm-10">
                                     <select class="form-control pull-right" name="aseguradora">
                                         <?php  foreach ($aseg as $as) { ?>
-                                        <option class="form-control pull-right" value="<?php echo $as->id_aseguradora ?>"><?php echo $as->nombre_aseg ?></option>
+                                        <option class="form-control pull-right" value="<?php echo $as->id_aseguradora ?>"><?php echo $as->nombre_aseg ?> | <?php echo $as->nombre_contacto ?> </option>
                                         <?php }
                                         ?>
                                     </select>
@@ -572,7 +626,7 @@
                 <div class="modal-footer">
                     <div class="box-footer">
                         <button type="reset" class="btn btn-default">Limpiar Formulario</button>
-                        <button name="boton" type="submit" class="btn btn-success pull-right">Agregar Documento</button>
+                        <button name="boton" type="submit" class="btn btn-warning pull-right">Agregar Vehículo</button>
                     </div><!-- /.box-footer -->
                     </form>
                 </div>
@@ -594,7 +648,7 @@
                         id="favoritesModalLabel">Documentos</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal" name="form" action="{{ url('Gestiones/Guardar') }}" role="form"
+                    <form class="form-horizontal" name="form" action="{{ url('Fotos/uploading') }}" role="form"
                           method="POST" enctype="multipart/form-data">
                         <div class="box-body">
 
@@ -602,19 +656,19 @@
 
                             <input type="hidden" name="id_accidente" value="<?php echo $inc->id_accidente?>">
                             {{--Tipo Accidente(1) o Incidente(2)--}}
-                            <input type="hidden" name="tipo" value="1">
+                            <input type="hidden" name="foto" value="documento">
 
                             <div class="form-group">
                                 <label for="exampleInputEmail1" class="col-sm-2 control-label">Nombre Doc:</label>
                                 <div class="col-sm-8">
-                                    <input class="form-control pull-right" type="text" name="asunto" required>
+                                    <input class="form-control pull-right" type="text" name="nombre" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="exampleInputEmail1" class="col-sm-2 control-label">Archivo:</label>
                                 <div class="col-sm-8">
-                                    <input type="file" name="file">
+                                    <input type="file" name="archivo">
                                 </div>
                             </div>
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -645,20 +699,21 @@
                         id="favoritesModalLabel">Croquis Accidente</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal" name="form" action="{{ url('Gestiones/Guardar') }}" role="form"
+                    <form class="form-horizontal" name="form" action="{{ url('Fotos/uploading') }}" role="form"
                           method="POST" enctype="multipart/form-data">
                         <div class="box-body">
 
                             <P>Agregar croquis de accidente al informe.</P>  <br>
 
                             <input type="hidden" name="id_accidente" value="<?php echo $inc->id_accidente?>">
+                            <input type="hidden" name="foto" value="croquis">
                             {{--Tipo Accidente(1) o Incidente(2)--}}
                             <input type="hidden" name="tipo" value="1">
 
                             <div class="form-group">
                                 <label for="exampleInputEmail1" class="col-sm-2 control-label">Archivo:</label>
                                 <div class="col-sm-8">
-                                    <input type="file" name="file">
+                                    <input type="file" name="archivo">
                                 </div>
                             </div>
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">

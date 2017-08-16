@@ -35,28 +35,36 @@ class AutosController extends Controller
        	public function GuardarNuevo()
     {
 
-    	$id = $_POST['id_accidente'];
-    	$marca = $_POST['marca'];
-    	$modelo = $_POST['modelo'];
-    	$placa = $_POST['placa'];
-    	$propietario = $_POST['propietario'];
-    	$rut_prop = $_POST['rut'];
-    	$direccion = $_POST['direccion'];
-    	$comuna = $_POST['comuna'];
-    	$fono = $_POST['fono'];
-    	$celular = $_POST['celular'];
-    	$correo = $_POST['correo'];
-    	$num_poliza = $_POST['poliza'];
-    	$danno_v = $_POST['mensaje'];
-    	$aseguradora = $_POST['aseguradora'];
-    	$danno_d = $_POST['d_dannos'];
+        if ($_POST['tipo']==1){
+            $tipo = 1;
+        }else{
+            $tipo = 2;
+        }
 
+        $id = $_POST['id_accidente'];
 
-    	DB::table('sp_veh_inc')->insert(
+        $marca = $_POST['marca'];
+        $modelo = $_POST['modelo'];
+        $placa = $_POST['placa'];
+        $conductor = $_POST['conductor'];
+        $propietario = $_POST['propietario'];
+        $rut_prop = $_POST['rut'];
+        $direccion = $_POST['direccion'];
+        $comuna = $_POST['comuna'];
+        $fono = $_POST['fono'];
+        $celular = $_POST['celular'];
+        $correo = $_POST['correo'];
+        $num_poliza = $_POST['poliza'];
+        $danno_v = $_POST['mensaje'];
+        $aseguradora = $_POST['aseguradora'];
+        $danno_d = $_POST['d_dannos'];
+
+        DB::table('sp_veh_inc')->insert(
             [   'marca' => $marca,
                 'modelo' => $modelo,
                 'placa' => $placa,
-                'propietario' => $propietario, 
+                'conductor' => $conductor,
+                'propietario' => $propietario,
                 'rut_prop' => $rut_prop,
                 'direccion' => $direccion,
                 'comuna' => $comuna,
@@ -64,12 +72,13 @@ class AutosController extends Controller
                 'celular' => $celular,
                 'correo' => $correo,
                 'num_poliza' => $num_poliza,
-                'danno_vehiculo' => $danno_v,
-                'dannos_v' => $danno_d,
+                'danno_vehiculo' => $danno_d,
+                'dannos_v' => $danno_v,
+                'tipo_registro' => $tipo,
                 'sp_aseguradoras_id_aseguradora' => $aseguradora,
-                'sp_incidentes_id_incidentes' => $id]
+                'id_acc_or_inc' => $id]
         );
 
-        return back();
+        return redirect('Accidentes/Mostrar');
     }
 }

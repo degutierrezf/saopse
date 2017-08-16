@@ -69,67 +69,334 @@
         <!-- /.col -->
 </div>
 
-<div class="info-box">
-            <div class="box-header">
-              <h3 class="box-title">Listado General de Accidentes</h3>
+
+<div class="body">
+    <div class="box box-success box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title">Ruta - Valles del Desierto</h3>
+
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
             </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
+            <!-- /.box-tools -->
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>ID</th>
-                  <th>Fecha / Hora</th>
-                  <th>Concesión / Ruta</th>
-                  <th>PK1 / PK 2</th>
-                  <th>Corte de Transito</th>
-                  <th>¿By Pass?</th>
-                  <th>Acciones</th>
+                    <th>Fecha / Hora</th>
+                    <th>Concesión / Ruta</th>
+                    <th>PK1 / PK 2</th>
+                    <th>Corte de Transito</th>
+                    <th>¿By Pass?</th>
+                    <th>Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
 
-                <?php  foreach ($listado as $cs) { ?>
-                  <tr>
-                  <td><form action="{{ url('Accidentes/Detalles') }}" role="form" method="POST">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="hidden" name="id_accidente" value="<?php echo $cs->id_accidente?>">
-                        <button type="submit" ><?php echo $cs->id_accidente?></button></form>
-                  </td>
-                  <td><?php echo $cs->fecha?> / <?php echo $cs->hora?></td>
-                  <td><?php echo $cs->nombre_conc?> - <?php echo $cs->nombre_ruta?></td>
-                  <td><?php echo $cs->pk1?> - <?php echo $cs->pk2?></td>
-                  <td></td>
-                  <th></th>
-                  <td>
-                      <form action="{{ url('Accidentes/Complemento') }}" role="form" method="POST">
-                          <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                          <input type="hidden" name="id_accidente" value="<?php echo $cs->id_accidente?>">
-                          <button class="btn btn-danger btn-xs" type="submit" >Ficha Complementaria</button></form>
+                <?php  foreach ($vdd as $cs) { ?>
+                <tr>
+                    <td><?php echo $cs->fecha?> / <?php echo $cs->hora?></td>
+                    <td><?php echo $cs->nombre_conc?> - <?php echo $cs->nombre_ruta?></td>
+                    <td><?php echo $cs->pk1?> - <?php echo $cs->pk2?></td>
+                    <td></td>
+                    <th></th>
+                    <td>
+                        <form action="{{ url('Accidentes/Complemento') }}" role="form" method="POST">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="id_accidente" value="<?php echo $cs->id_accidente?>">
+                            <button class="btn btn-danger btn-xs" type="submit" >Ficha Complementaria</button></form>
 
-                      <form action="{{ url('Accidentes/Detalles') }}" role="form" method="POST">
-                          <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                          <input type="hidden" name="id_accidente" value="<?php echo $cs->id_accidente?>">
-                          <button class="btn btn-primary btn-xs" type="submit" >Documentos & Otros</button></form>
-                  </td>
+                        <form action="{{ url('Accidentes/Detalles') }}" role="form" method="POST">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="id_accidente" value="<?php echo $cs->id_accidente?>">
+                            <button class="btn btn-primary btn-xs" type="submit" >Documentos & Otros</button></form>
+                    </td>
                 </tr>
                 <?php }
                 ?>
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th>ID</th>
-                  <th>Fecha / Hora</th>
-                  <th>Concesión / Ruta</th>
-                  <th>PK1 / PK 2</th>
-                  <th>Corte de Transito</th>
-                  <th>¿By Pass?</th>
-                  <th>Acciones</th>
+                    <th>Fecha / Hora</th>
+                    <th>Concesión / Ruta</th>
+                    <th>PK1 / PK 2</th>
+                    <th>Corte de Transito</th>
+                    <th>¿By Pass?</th>
+                    <th>Acciones</th>
                 </tr>
                 </tfoot>
-              </table>
-            </div>
-            <!-- /.box-body -->
+            </table>
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
 </div>
+
+<div class="body">
+    <div class="box box-warning box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title">Ruta - Valles del Biobío</h3>
+
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+            </div>
+            <!-- /.box-tools -->
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>Fecha / Hora</th>
+                    <th>Concesión / Ruta</th>
+                    <th>PK1 / PK 2</th>
+                    <th>Corte de Transito</th>
+                    <th>¿By Pass?</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <?php  foreach ($vbb as $cs) { ?>
+                <tr>
+                    <td><?php echo $cs->fecha?> / <?php echo $cs->hora?></td>
+                    <td><?php echo $cs->nombre_conc?> - <?php echo $cs->nombre_ruta?></td>
+                    <td><?php echo $cs->pk1?> - <?php echo $cs->pk2?></td>
+                    <td></td>
+                    <th></th>
+                    <td>
+                        <form action="{{ url('Accidentes/Complemento') }}" role="form" method="POST">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="id_accidente" value="<?php echo $cs->id_accidente?>">
+                            <button class="btn btn-danger btn-xs" type="submit" >Ficha Complementaria</button></form>
+
+                        <form action="{{ url('Accidentes/Detalles') }}" role="form" method="POST">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="id_accidente" value="<?php echo $cs->id_accidente?>">
+                            <button class="btn btn-primary btn-xs" type="submit" >Documentos & Otros</button></form>
+                    </td>
+                </tr>
+                <?php }
+                ?>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th>Fecha / Hora</th>
+                    <th>Concesión / Ruta</th>
+                    <th>PK1 / PK 2</th>
+                    <th>Corte de Transito</th>
+                    <th>¿By Pass?</th>
+                    <th>Acciones</th>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+</div>
+
+<div class="body">
+    <div class="box box-primary box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title">Ruta - Ruta del Limarí</h3>
+
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+            </div>
+            <!-- /.box-tools -->
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>Fecha / Hora</th>
+                    <th>Concesión / Ruta</th>
+                    <th>PK1 / PK 2</th>
+                    <th>Corte de Transito</th>
+                    <th>¿By Pass?</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <?php  foreach ($rdl as $cs) { ?>
+                <tr>
+                    <td><?php echo $cs->fecha?> / <?php echo $cs->hora?></td>
+                    <td><?php echo $cs->nombre_conc?> - <?php echo $cs->nombre_ruta?></td>
+                    <td><?php echo $cs->pk1?> - <?php echo $cs->pk2?></td>
+                    <td></td>
+                    <th></th>
+                    <td>
+                        <form action="{{ url('Accidentes/Complemento') }}" role="form" method="POST">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="id_accidente" value="<?php echo $cs->id_accidente?>">
+                            <button class="btn btn-danger btn-xs" type="submit" >Ficha Complementaria</button></form>
+
+                        <form action="{{ url('Accidentes/Detalles') }}" role="form" method="POST">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="id_accidente" value="<?php echo $cs->id_accidente?>">
+                            <button class="btn btn-primary btn-xs" type="submit" >Documentos & Otros</button></form>
+                    </td>
+                </tr>
+                <?php }
+                ?>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th>Fecha / Hora</th>
+                    <th>Concesión / Ruta</th>
+                    <th>PK1 / PK 2</th>
+                    <th>Corte de Transito</th>
+                    <th>¿By Pass?</th>
+                    <th>Acciones</th>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+</div>
+
+<div class="body">
+    <div class="box box-info box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title">Ruta - Rutas del Desierto</h3>
+
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+            </div>
+            <!-- /.box-tools -->
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>Fecha / Hora</th>
+                    <th>Concesión / Ruta</th>
+                    <th>PK1 / PK 2</th>
+                    <th>Corte de Transito</th>
+                    <th>¿By Pass?</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <?php  foreach ($rdd as $cs) { ?>
+                <tr>
+                    <td><?php echo $cs->fecha?> / <?php echo $cs->hora?></td>
+                    <td><?php echo $cs->nombre_conc?> - <?php echo $cs->nombre_ruta?></td>
+                    <td><?php echo $cs->pk1?> - <?php echo $cs->pk2?></td>
+                    <td></td>
+                    <th></th>
+                    <td>
+                        <form action="{{ url('Accidentes/Complemento') }}" role="form" method="POST">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="id_accidente" value="<?php echo $cs->id_accidente?>">
+                            <button class="btn btn-danger btn-xs" type="submit" >Ficha Complementaria</button></form>
+
+                        <form action="{{ url('Accidentes/Detalles') }}" role="form" method="POST">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="id_accidente" value="<?php echo $cs->id_accidente?>">
+                            <button class="btn btn-primary btn-xs" type="submit" >Documentos & Otros</button></form>
+                    </td>
+                </tr>
+                <?php }
+                ?>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th>Fecha / Hora</th>
+                    <th>Concesión / Ruta</th>
+                    <th>PK1 / PK 2</th>
+                    <th>Corte de Transito</th>
+                    <th>¿By Pass?</th>
+                    <th>Acciones</th>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+</div>
+
+<div class="body">
+    <div class="box box-danger box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title">Ruta - Ruta del Algarrobo</h3>
+
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+            </div>
+            <!-- /.box-tools -->
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>Fecha / Hora</th>
+                    <th>Concesión / Ruta</th>
+                    <th>PK1 / PK 2</th>
+                    <th>Corte de Transito</th>
+                    <th>¿By Pass?</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <?php  foreach ($rda as $cs) { ?>
+                <tr>
+                    <td><?php echo $cs->fecha?> / <?php echo $cs->hora?></td>
+                    <td><?php echo $cs->nombre_conc?> - <?php echo $cs->nombre_ruta?></td>
+                    <td><?php echo $cs->pk1?> - <?php echo $cs->pk2?></td>
+                    <td></td>
+                    <th></th>
+                    <td>
+                        <form action="{{ url('Accidentes/Complemento') }}" role="form" method="POST">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="id_accidente" value="<?php echo $cs->id_accidente?>">
+                            <button class="btn btn-danger btn-xs" type="submit" >Ficha Complementaria</button></form>
+
+                        <form action="{{ url('Accidentes/Detalles') }}" role="form" method="POST">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="id_accidente" value="<?php echo $cs->id_accidente?>">
+                            <button class="btn btn-primary btn-xs" type="submit" >Documentos & Otros</button></form>
+                    </td>
+                </tr>
+                <?php }
+                ?>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th>Fecha / Hora</th>
+                    <th>Concesión / Ruta</th>
+                    <th>PK1 / PK 2</th>
+                    <th>Corte de Transito</th>
+                    <th>¿By Pass?</th>
+                    <th>Acciones</th>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+</div>
+
+
+
+
 
 @endsection

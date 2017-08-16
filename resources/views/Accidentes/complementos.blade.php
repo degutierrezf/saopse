@@ -79,20 +79,27 @@
                 </table>
                 <center>
 
-                    <button type="button" class="btn btn-xs"><i class="fa fa-envelope-o"></i> Generar Carta de Cobro
+                    <form action="{{ url('Accidentes/FormularioTiro') }}" role="form" method="POST">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <input type="hidden" name="id_accidente" value="<?php echo $inc->id_accidente?>">
+                        <button type="submit" class="btn btn-xs"><i class="fa fa-file-pdf-o"></i> Ver Carta de Cobro
+                        </button>
+                    </form>
+                    <br>
+                    <form action="{{ url('Cotizacion/Nuevo') }}" role="form" method="POST">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <input type="hidden" name="id_accidente" value="<?php echo $inc->id_accidente?>">
+                        <button type="submit" class="btn btn-xs"><i class="fa fa-file-pdf-o"></i> Ver Cotización
+                        </button>
+                    </form>
                     </button>
-                    &nbsp;&nbsp;&nbsp;
-
-                    <button type="button" class="btn btn-xs"><i class="fa fa-file-pdf-o"></i> Generar Cotización
-                    </button>
-                    <br><br>
-                    <button type="button" class="btn btn-success btn-xs"><i class="fa fa-file-pdf-o"></i> Imprimir
-                        Informe
-                    </button>
-
-                    <button type="button" class="btn btn-primary btn-xs"><i class="fa fa-file-pdf-o"></i> Imprimir en
-                        PDF
-                    </button>
+                    <br>
+                    <form action="{{ url('Accidentes/FormularioTiro') }}" role="form" method="POST">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <input type="hidden" name="id_accidente" value="<?php echo $inc->id_accidente?>">
+                        <button type="submit" class="btn btn-success btn-xs"><i class="fa fa-file-pdf-o"></i> Informe Hoja 1
+                        </button>
+                    </form>
 
                 </center>
             </div>

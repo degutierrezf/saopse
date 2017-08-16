@@ -10,6 +10,15 @@
 
 @section('main-content')
 
+    <div class="row">
+    <div class="col-md-2">
+        <a class="btn btn-app btn" href="/Aseguradoras/Nuevo">
+            <i class="fa fa-plus-square"></i> Ingresar nueva Aseguradora
+        </a>
+    </div>
+    </div>
+
+
 <div class="info-box">
             <div class="box-header">
               <h3 class="box-title">Listado General de Aseguradoras</h3>
